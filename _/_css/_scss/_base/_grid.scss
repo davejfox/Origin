@@ -1,0 +1,178 @@
+@function gridCalc($colNumber, $totalColumns) {
+    @return percentage(($colNumber / $totalColumns));
+}
+
+@mixin grid-column($columns:false, $push:false, $pull:false) {
+
+    @if $columns {
+        width: gridCalc($columns, $totalColumns);
+    }
+
+    @if $push { 
+        #{$defaultFloat}: gridCalc($push, $totalColumns); 
+        #{$oppositeDirection}: auto; 
+    }
+
+    @if $pull { 
+        #{$oppositeDirection}: gridCalc($pull, $totalColumns); 
+        #{$defaultFloat}: auto; 
+    }
+}
+
+.row {
+    width: 100%;
+    margin: 0 auto;
+    max-width: $rowWidth;
+    *zoom: 1;
+
+    .row {
+        width: auto;
+        margin: 0 -$columnGutter/2;
+        max-width: none;
+        *zoom: 1; 
+    }
+
+    &:after {
+        content: " ";
+        clear: both;
+        display: block;
+        width: 100%;
+        height: 0;
+    }
+}
+
+.columns {
+    padding: 0 $columnGutter/2;
+    position: relative;
+    float: $defaultFloat;
+
+    &:last-child {
+        float: $oppositeDirection;
+    }
+}
+
+.small-text-center {
+    text-align: center;
+}
+
+.small-text-left {
+    text-align: left;
+}
+
+.small-text-right {
+    text-align: right;
+}
+
+.columns.small-centered {
+    margin-left: auto;
+    margin-right: auto;
+    float: none; 
+}
+
+.columns.small-uncentered {
+    margin-left: 0;
+    margin-right: 0;
+    float: left;
+
+    &.opposite {
+        float: right;
+    }
+}
+
+@for $i from 1 through $totalColumns {
+  .small#{-$i} { @include grid-column($columns:$i); }
+}
+
+@for $i from 0 through $totalColumns {
+  .small-push#{-$i} { @include grid-column($push:$i); }
+}
+
+@for $i from 0 through $totalColumns {
+  .small-pull#{-$i} { @include grid-column($pull:$i); }
+}
+
+@media only screen and (min-width: 30em) {
+
+    .medium-text-center {
+        text-align: center;
+    }
+
+    .medium-text-left {
+        text-align: left;
+    }
+
+    .medium-text-right {
+        text-align: right;
+    }
+
+    .columns.medium-centered {
+        margin-left: auto;
+        margin-right: auto;
+        float: none; 
+    }
+
+    .columns.medium-uncentered {
+        margin-left: 0;
+        margin-right: 0;
+        float: left;
+
+        &.opposite {
+            float: right;
+        }
+    }
+
+    @for $i from 1 through $totalColumns {
+      .medium#{-$i} { @include grid-column($columns:$i); }
+    }
+
+    @for $i from 0 through $totalColumns {
+      .medium-push#{-$i} { @include grid-column($push:$i); }
+    }
+
+    @for $i from 0 through $totalColumns {
+      .medium-pull#{-$i} { @include grid-column($pull:$i); }
+    }
+}
+
+@media only screen and (min-width: 60em) {
+
+    .large-text-center {
+        text-align: center;
+    }
+
+    .large-text-left {
+        text-align: left;
+    }
+
+    .large-text-right {
+        text-align: right;
+    }
+
+    .columns.large-centered {
+        margin-left: auto;
+        margin-right: auto;
+        float: none; 
+    }
+
+    .columns.large-uncentered {
+        margin-left: 0;
+        margin-right: 0;
+        float: left;
+
+        &.opposite {
+            float: right;
+        }
+    }
+
+    @for $i from 1 through $totalColumns {
+      .large#{-$i} { @include grid-column($columns:$i); }
+    }
+
+    @for $i from 0 through $totalColumns {
+      .large-push#{-$i} { @include grid-column($push:$i); }
+    }
+
+    @for $i from 0 through $totalColumns {
+      .large-pull#{-$i} { @include grid-column($pull:$i); }
+    }
+}
