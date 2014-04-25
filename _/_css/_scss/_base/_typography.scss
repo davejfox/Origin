@@ -3,6 +3,12 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .alpha {
+	@include font-size(1.6);
+	@include property(margin, 1, 2, 3, 4);
+
+	@include property(padding, 2, 3);
+
+	@include property(transition, all, linear, 0.3s);
 }
 
 h2, .beta {

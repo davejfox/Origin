@@ -22,12 +22,14 @@
 .row {
     width: 100%;
     margin: 0 auto;
-    max-width: $rowWidth;
+    max-width: ($rowWidth * 10) + px;
+    max-width: ($rowWidth) + rem;
     *zoom: 1;
 
     .row {
         width: auto;
-        margin: 0 -$columnGutter/2;
+        margin: 0 (-($columnGutter/2 * 10) + px);
+        margin: 0 (-($columnGutter/2) + rem);
         max-width: none;
         *zoom: 1; 
     }
@@ -42,7 +44,8 @@
 }
 
 .columns {
-    padding: 0 $columnGutter/2;
+    padding: 0 ($columnGutter/2 * 10) + px;
+    padding: 0 ($columnGutter/2) + rem;
     position: relative;
     float: $defaultFloat;
 
@@ -51,25 +54,25 @@
     }
 }
 
-.small-text-center {
+.large-text-center {
     text-align: center;
 }
 
-.small-text-left {
+.large-text-left {
     text-align: left;
 }
 
-.small-text-right {
+.large-text-right {
     text-align: right;
 }
 
-.columns.small-centered {
+.columns.large-centered {
     margin-left: auto;
     margin-right: auto;
     float: none; 
 }
 
-.columns.small-uncentered {
+.columns.large-uncentered {
     margin-left: 0;
     margin-right: 0;
     float: left;
@@ -80,18 +83,18 @@
 }
 
 @for $i from 1 through $totalColumns {
-  .small#{-$i} { @include grid-column($columns:$i); }
+  .large#{-$i} { @include grid-column($columns:$i); }
 }
 
 @for $i from 0 through $totalColumns {
-  .small-push#{-$i} { @include grid-column($push:$i); }
+  .large-push#{-$i} { @include grid-column($push:$i); }
 }
 
 @for $i from 0 through $totalColumns {
-  .small-pull#{-$i} { @include grid-column($pull:$i); }
+  .large-pull#{-$i} { @include grid-column($pull:$i); }
 }
 
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 48.001rem) and (max-width: 90rem) {
 
     .medium-text-center {
         text-align: center;
@@ -134,27 +137,27 @@
     }
 }
 
-@media only screen and (min-width: 60em) {
+@media only screen and (max-width: 30rem) {
 
-    .large-text-center {
+    .small-text-center {
         text-align: center;
     }
 
-    .large-text-left {
+    .small-text-left {
         text-align: left;
     }
 
-    .large-text-right {
+    .small-text-right {
         text-align: right;
     }
 
-    .columns.large-centered {
+    .columns.small-centered {
         margin-left: auto;
         margin-right: auto;
         float: none; 
     }
 
-    .columns.large-uncentered {
+    .columns.small-uncentered {
         margin-left: 0;
         margin-right: 0;
         float: left;
@@ -165,14 +168,14 @@
     }
 
     @for $i from 1 through $totalColumns {
-      .large#{-$i} { @include grid-column($columns:$i); }
+      .small#{-$i} { @include grid-column($columns:$i); }
     }
 
     @for $i from 0 through $totalColumns {
-      .large-push#{-$i} { @include grid-column($push:$i); }
+      .small-push#{-$i} { @include grid-column($push:$i); }
     }
 
     @for $i from 0 through $totalColumns {
-      .large-pull#{-$i} { @include grid-column($pull:$i); }
+      .small-pull#{-$i} { @include grid-column($pull:$i); }
     }
 }

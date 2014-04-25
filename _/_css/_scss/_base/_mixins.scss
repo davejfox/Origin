@@ -1,0 +1,52 @@
+// Border Radius
+@mixin borderRadius($size) {
+	background-clip: padding-box;
+	-webkit-border-radius: $size;
+	   -moz-border-radius: $size;
+			border-radius: $size;
+}
+
+// Opacity
+@mixin opacity($opacity) {
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity=$opacity-ie);
+	opacity: $opacity;
+}
+
+// Font Size
+@mixin font-size($sizeValue){
+	font-size: ($sizeValue * 10) + px;
+	font-size: ($sizeValue) + rem;
+}
+
+// Margin / Padding
+@function prop-count($num) {
+	@return $num / ($num * 0 + 1);
+}
+
+@mixin property($styleProperty, $values...) {
+	$max: length($values);
+	$pxValues: '';
+	$remValues: '';
+
+	@for $i from 1 through $max {
+		$value: prop-count(nth($values, $i));
+		$pxValues: #{$pxValues + $value*10}px;
+
+		@if $i < $max {
+			$pxValues: #{$pxValues + " "};
+		}
+	} 
+
+	@for $i from 1 through $max {
+		$value: prop-count(nth($values, $i));
+		$remValues: #{$remValues + $value}rem;
+
+		@if $i < $max {
+			$remValues: #{$remValues + " "};
+		}
+	} 
+
+	#{$styleProperty}: $pxValues; 
+	#{$styleProperty}: $remValues; 
+}

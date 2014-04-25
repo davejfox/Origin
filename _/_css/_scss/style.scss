@@ -1,46 +1,23 @@
 // BASE STYLES
 // ---------------------------------------------------------
 @import "_base/_variables.scss";
+@import "_base/_mixins.scss";
 @import "_base/_reset.scss";
 @import "_base/_grid.scss";
 @import "_base/_typography.scss";
 
 
-// // MODULES
-// // ---------------------------------------------------------
-// @import "modules/_buttons.scss";
-// @import "modules/_social-links.scss";
-// @import "modules/_forms.scss";
-// @import "modules/_tables.scss";
-// @import "modules/_tooltip.scss";
-// @import "modules/_panels.scss";
-// @import "modules/_keylines.scss";
-// @import "modules/_hero.scss";
-// @import "modules/_carousel.scss";
-// @import "modules/_signup-form.scss";
-// @import "modules/_team-bio.scss";
-// @import "modules/_community-grid.scss";
-// @import "modules/_preorder-form.scss";
-// @import "modules/_news-panels.scss";
-// @import "modules/_nymi-icons.scss";
-// @import "modules/_tech-specs.scss";
-// @import "modules/_fact-tips.scss";
-// @import "modules/_contact-panel.scss";
-// @import "modules/_counter.scss";
-// @import "modules/_faq.scss";
-// @import "modules/_preorder.scss";
+// VENDOR 
+// ---------------------------------------------------------
+//@import "vendor/_name-here.scss";
 
 
-// // VENDOR 
-// // ---------------------------------------------------------
-// @import "vendor/_icomoon.scss";
-// @import "vendor/_flexslider.scss";
+// MODULES
+// ---------------------------------------------------------
+@import "_modules/_header.scss";
+@import "_modules/_footer.scss";
 
-// // REGIONS
-// // ---------------------------------------------------------
-// @import "regions/_header.scss";
-// @import "regions/_home-hero.scss";
-// @import "regions/_preorder-hero.scss";
-// @import "regions/_blog.scss";
-// @import "regions/_develop.scss";
-// @import "regions/_footer.scss";
+
+// REGIONS
+// ---------------------------------------------------------
+@import "_regions/_homepage.scss";
