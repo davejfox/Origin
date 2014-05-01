@@ -19,7 +19,7 @@
 	font-size: ($sizeValue) + rem;
 }
 
-// Margin / Padding
+// Property & values - useful for Margin or Padding
 @function prop-count($num) {
 	@return $num / ($num * 0 + 1);
 }
@@ -50,3 +50,47 @@
 	#{$styleProperty}: $pxValues; 
 	#{$styleProperty}: $remValues; 
 }
+
+
+
+// @function parse-unique-id($value) {
+//     $letters: a b c d e f g h i j k l m n o p q r s t u v w x y z;
+//     $value: unquote("");
+//     @for $i from 1 through str-length($value) {
+//         $letter: str-slice($value, $i, $i + 1);
+//         @if index($letter, $letters) == false {
+//             $value: str-insert($value, $letter, str-length($value) + 1);
+//         }
+//     }
+//     @return $value;
+// }
+
+// $number: parse-unique-id(unique-id());
+
+
+
+// @mixin property($styleProperty, $values...) {
+// 	$numbers: 0 1 2 3 4 5 6 7 8 9;
+// 	$max: length($values);
+// 	$pxValues: '';
+// 	$remValues: '';
+// 	$value: '';
+	
+// 	@for $i from 1 through $max {
+//         $letter: str-slice($numbers, $i, $i + 1);
+//         @if index($numbers, $numbers) == false {
+//             $value: str-insert($value, $numbers, str-length($value) + 1);
+//         }
+//     }
+
+// 	#{$styleProperty}: $pxValues; 
+// 	#{$styleProperty}: $remValues; 
+
+// }
+
+
+
+
+
+
+
