@@ -1,3 +1,43 @@
+/*--------------------------------------------------------------
+Font Size
+--------------------------------------------------------------*/
+/*
+Generates font size (calculated from rem 10px = 1.0rem) with px values as fallback.
+Example: @include font-size(1.6);
+*/
+/*--------------------------------------------------------------
+Font Family
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+Border Radius
+--------------------------------------------------------------*/
+/*
+Creates border-radius with vendor prefixes and background clip.
+
+"true" will create a perfect circle - a border radius of 50%.
+Example: @include borderRadius(true);
+
+"false", followed by values (calculated from rem 10px = 1.0rem) will create border radius with rem values and px values as a fallback.
+Example: @include borderRadius(false, 1.0, 2.0, 2.5, 1.5); or borderRadius(false, 1.0, 2.0);
+*/
+/*--------------------------------------------------------------
+Opacity
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+Property & Values
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+Transition
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+Box Shadow 
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+Text Shadow 
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+Browser Prefix
+--------------------------------------------------------------*/
 *,
 *:before,
 *:after {
@@ -621,8 +661,23 @@ samp {
   .small-pull-12 {
     right: 100%;
     left: auto; } }
-h1, .alpha {
-  font-size: 16px;
-  font-size: 1.6rem;
-  margin: 10px 10px 30px 40px;
-  margin: 1rem 1rem 3rem 4rem; }
+.test {
+  display: block;
+  background: #ccc;
+  width: 100px;
+  height: 100px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  -webkit-border-radius: 200px 400px 200px 100px;
+  -moz-border-radius: 200px 400px 200px 100px;
+  border-radius: 200px 400px 200px 100px;
+  -webkit-border-radius: 20rem 40rem 20rem 10rem;
+  -moz-border-radius: 20rem 40rem 20rem 10rem;
+  border-radius: 20rem 40rem 20rem 10rem;
+  -webkit-border-transition: color 0.2s ease, background 0.2s ease;
+  -moz-border-transition: color 0.2s ease, background 0.2s ease;
+  border-transition: color 0.2s ease, background 0.2s ease;
+  -webkit-border-box-shadow: 0px 10px 4px black;
+  -moz-border-box-shadow: 0px 10px 4px black;
+  border-box-shadow: 0px 10px 4px black; }

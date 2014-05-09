@@ -1,0 +1,11 @@
+.test {
+	display: block;
+	background: #ccc;
+	width: 100px;
+	height: 100px;
+
+	@include borderRadius(false, 20, 40, 20, 10);
+	@include transition(color 0.2s ease, background 0.2s ease);
+
+	@include prefix(box-shadow, 0px 10px 4px #000)
+}

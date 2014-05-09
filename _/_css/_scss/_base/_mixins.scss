@@ -1,25 +1,105 @@
-// Border Radius
-@mixin borderRadius($size) {
-	background-clip: padding-box;
-	-webkit-border-radius: $size;
-	   -moz-border-radius: $size;
-			border-radius: $size;
-}
-
-// Opacity
-@mixin opacity($opacity) {
-	$opacity-ie: $opacity * 100;
-	filter: alpha(opacity=$opacity-ie);
-	opacity: $opacity;
-}
-
-// Font Size
+/*--------------------------------------------------------------
+Font Size
+--------------------------------------------------------------*/
+/*
+Generates font size (calculated from rem 10px = 1.0rem) with px values as fallback.
+Example: @include font-size(1.6);
+*/
 @mixin font-size($sizeValue){
 	font-size: ($sizeValue * 10) + px;
 	font-size: ($sizeValue) + rem;
 }
 
-// Property & values - useful for Margin or Padding
+
+/*--------------------------------------------------------------
+Font Family
+--------------------------------------------------------------*/
+@mixin font($fontName, $fontLongname) {
+
+	// WORK IN PROGRESS
+
+    @font-face {
+        font-family: $fontName;
+        src: url("../fonts/" + $fontLongname + ".eot");
+        src: local('☺'), url("../fonts/" + $fontLongname + ".woff") format('woff'),
+            url("../fonts/" + $fontLongname + ".ttf") format('truetype'),
+            url("../fonts/" + $fontLongname + ".svg#webfontjVVPrHqE") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+
+/*--------------------------------------------------------------
+Border Radius
+--------------------------------------------------------------*/
+/*
+Creates border-radius with vendor prefixes and background clip.
+
+"true" will create a perfect circle - a border radius of 50%.
+Example: @include borderRadius(true);
+
+"false", followed by values (calculated from rem 10px = 1.0rem) will create border radius with rem values and px values as a fallback.
+Example: @include borderRadius(false, 1.0, 2.0, 2.5, 1.5); or borderRadius(false, 1.0, 2.0);
+*/
+@mixin borderRadius($circle, $values...) {
+
+	$max: length($values);
+	$pxValues: '';
+	$remValues: '';
+
+	@for $i from 1 through $max {
+		$value: prop-count(nth($values, $i));
+		$pxValues: #{$pxValues + $value*10}px;
+
+		@if $i < $max {
+			$pxValues: #{$pxValues + " "};
+		}
+	} 
+
+	@for $i from 1 through $max {
+		$value: prop-count(nth($values, $i));
+		$remValues: #{$remValues + $value}rem;
+
+		@if $i < $max {
+			$remValues: #{$remValues + " "};
+		}
+	}
+
+	-webkit-background-clip: padding-box;
+	   -moz-background-clip: padding;
+			background-clip: padding-box;
+	@if $circle {
+		-webkit-border-radius: 50%;
+	   	   -moz-border-radius: 50%;
+				border-radius: 50%;
+	}
+	@else {
+		-webkit-border-radius: $pxValues;
+	   	   -moz-border-radius: $pxValues;
+				border-radius: $pxValues;
+		-webkit-border-radius: $remValues;
+	   	   -moz-border-radius: $remValues;
+				border-radius: $remValues;
+	}
+}
+
+
+/*--------------------------------------------------------------
+Opacity
+--------------------------------------------------------------*/
+@mixin opacity($opacity) {
+	$opacity-ie: $opacity * 100;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="$opacity * 100")";
+	filter: alpha(opacity=$opacity-ie);
+	opacity: $opacity;
+	zoom: 1;
+}
+
+
+/*--------------------------------------------------------------
+Property & Values
+--------------------------------------------------------------*/
 @function prop-count($num) {
 	@return $num / ($num * 0 + 1);
 }
@@ -52,45 +132,45 @@
 }
 
 
+/*--------------------------------------------------------------
+Transition
+--------------------------------------------------------------*/
+@mixin transition($effect...) {
+	-webkit-border-transition: $effect;
+   	   -moz-border-transition: $effect;
+			border-transition: $effect;
+}
 
-// @function parse-unique-id($value) {
-//     $letters: a b c d e f g h i j k l m n o p q r s t u v w x y z;
-//     $value: unquote("");
-//     @for $i from 1 through str-length($value) {
-//         $letter: str-slice($value, $i, $i + 1);
-//         @if index($letter, $letters) == false {
-//             $value: str-insert($value, $letter, str-length($value) + 1);
-//         }
-//     }
-//     @return $value;
+
+/*--------------------------------------------------------------
+Box Shadow 
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+Text Shadow 
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+Browser Prefix
+--------------------------------------------------------------*/
+@mixin prefix($attr, $value) {
+	-webkit-border-#{$attr}: $value;
+   	   -moz-border-#{$attr}: $value;
+			border-#{$attr}: $value;
+}
+
+
+
+
+// @mixin shadow($horizontalBS, $verticalBS, $blurRadius:"", $color, $inset:"") {
+// 	box-shadow: #{$inset} ($horizontalBS * 10) + px ($verticalBS * 10) + px ($blurRadius * 10) + px $color;
+// 	box-shadow: #{$inset} ($horizontalBS) + rem ($verticalBS) + rem ($blurRadius) + rem $color;
 // }
 
-// $number: parse-unique-id(unique-id());
-
-
-
-// @mixin property($styleProperty, $values...) {
-// 	$numbers: 0 1 2 3 4 5 6 7 8 9;
-// 	$max: length($values);
-// 	$pxValues: '';
-// 	$remValues: '';
-// 	$value: '';
-	
-// 	@for $i from 1 through $max {
-//         $letter: str-slice($numbers, $i, $i + 1);
-//         @if index($numbers, $numbers) == false {
-//             $value: str-insert($value, $numbers, str-length($value) + 1);
-//         }
-//     }
-
-// 	#{$styleProperty}: $pxValues; 
-// 	#{$styleProperty}: $remValues; 
-
+// @mixin box-shadow( $horiz : .5em , $vert : .5em , $blur : 0px , $spread : 0px , $color : #000000 ){
+// -webkit-box-shadow: $horiz $vert $blur $spread $color;
+// -moz-box-shadow: $horiz $vert $blur $spread $color;
+// box-shadow: $horiz $vert $blur $spread $color;
 // }
-
-
-
-
-
-
-
