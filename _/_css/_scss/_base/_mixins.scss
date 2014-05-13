@@ -1,19 +1,24 @@
-/*--------------------------------------------------------------
-Font Size
---------------------------------------------------------------*/
-/*
-Generates font size (calculated from rem 10px = 1.0rem) with px values as fallback.
-Example: @include font-size(1.6);
-*/
-@mixin font-size($sizeValue){
-	font-size: ($sizeValue * 10) + px;
-	font-size: ($sizeValue) + rem;
+//----------------------------------------------------------------
+//	Font Size
+//----------------------------------------------------------------
+//	Generates font size (enter px value) with px values as fallback.
+//
+//	Example:
+//	@include fontSize(16);
+//
+//	Will output:
+//	font-size: 16px;
+//	font-size: 1.6rem;
+
+@mixin fontSize($value) {
+	font-size: ($value) + px;
+	font-size: ($value / 10) + rem;
 }
 
 
-/*--------------------------------------------------------------
-Font Family
---------------------------------------------------------------*/
+//----------------------------------------------------------------
+//	Font Family
+//----------------------------------------------------------------
 @mixin font($fontName, $fontLongname) {
 
 	// WORK IN PROGRESS
@@ -30,18 +35,17 @@ Font Family
 }
 
 
-/*--------------------------------------------------------------
-Border Radius
---------------------------------------------------------------*/
-/*
-Creates border-radius with vendor prefixes and background clip.
+//----------------------------------------------------------------
+//	Border Radius
+//----------------------------------------------------------------
+//	Creates border-radius with vendor prefixes and background clip.
+//	
+//	"true" will create a perfect circle - a border radius of 50%.
+//	Example: @include borderRadius(true);
+//	
+//	"false", followed by values (calculated from rem 10px = 1.0rem) will create border radius with rem values and px values as a fallback.
+//	Example: @include borderRadius(false, 1.0, 2.0, 2.5, 1.5); or borderRadius(false, 1.0, 2.0);
 
-"true" will create a perfect circle - a border radius of 50%.
-Example: @include borderRadius(true);
-
-"false", followed by values (calculated from rem 10px = 1.0rem) will create border radius with rem values and px values as a fallback.
-Example: @include borderRadius(false, 1.0, 2.0, 2.5, 1.5); or borderRadius(false, 1.0, 2.0);
-*/
 @mixin borderRadius($circle, $values...) {
 
 	$max: length($values);
@@ -85,9 +89,9 @@ Example: @include borderRadius(false, 1.0, 2.0, 2.5, 1.5); or borderRadius(false
 }
 
 
-/*--------------------------------------------------------------
-Opacity
---------------------------------------------------------------*/
+//----------------------------------------------------------------
+//	Opacity
+//----------------------------------------------------------------
 @mixin opacity($opacity) {
 	$opacity-ie: $opacity * 100;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="$opacity * 100")";
@@ -97,9 +101,9 @@ Opacity
 }
 
 
-/*--------------------------------------------------------------
-Property & Values
---------------------------------------------------------------*/
+//----------------------------------------------------------------
+//	Property & Values
+//----------------------------------------------------------------
 @function prop-count($num) {
 	@return $num / ($num * 0 + 1);
 }
@@ -111,7 +115,7 @@ Property & Values
 
 	@for $i from 1 through $max {
 		$value: prop-count(nth($values, $i));
-		$pxValues: #{$pxValues + $value*10}px;
+		$pxValues: #{$pxValues + $value}px;
 
 		@if $i < $max {
 			$pxValues: #{$pxValues + " "};
@@ -120,7 +124,7 @@ Property & Values
 
 	@for $i from 1 through $max {
 		$value: prop-count(nth($values, $i));
-		$remValues: #{$remValues + $value}rem;
+		$remValues: #{$remValues + $value/10}rem;
 
 		@if $i < $max {
 			$remValues: #{$remValues + " "};
@@ -132,29 +136,42 @@ Property & Values
 }
 
 
-/*--------------------------------------------------------------
-Transition
---------------------------------------------------------------*/
+//----------------------------------------------------------------
+//	Transition
+//----------------------------------------------------------------
 @mixin transition($effect...) {
 	-webkit-border-transition: $effect;
    	   -moz-border-transition: $effect;
 			border-transition: $effect;
 }
 
+//----------------------------------------------------------------
+//	Box Shadow
+//----------------------------------------------------------------
 
-/*--------------------------------------------------------------
-Box Shadow 
---------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------
-Text Shadow 
---------------------------------------------------------------*/
+//----------------------------------------------------------------
+//	Text Shadow
+//----------------------------------------------------------------
 
 
-/*--------------------------------------------------------------
-Browser Prefix
---------------------------------------------------------------*/
+//----------------------------------------------------------------
+//	Image with high res version
+//----------------------------------------------------------------
+@mixin backgroundImage($fileName, $ext, $vars, $highRes:"false") {
+	background: url(/_/_images/#{$fileName}.#{$ext}) $vars;
+	
+    @if $highRes == true {
+		
+		// HIGH RES STUFF HERE
+		// WORK IN PROGRESS
+	}
+}
+
+
+//----------------------------------------------------------------
+//	Browser Pre-Fix
+//----------------------------------------------------------------
+
 @mixin prefix($attr, $value) {
 	-webkit-border-#{$attr}: $value;
    	   -moz-border-#{$attr}: $value;

@@ -22,14 +22,14 @@
 .row {
     width: 100%;
     margin: 0 auto;
-    max-width: ($rowWidth * 10) + px;
-    max-width: ($rowWidth) + rem;
+    max-width: ($rowWidth) + px;
+    max-width: ($rowWidth / 10) + rem;
     *zoom: 1;
 
     .row {
         width: auto;
-        margin: 0 (-($columnGutter/2 * 10) + px);
-        margin: 0 (-($columnGutter/2) + rem);
+        margin: 0 (-($columnGutter/2) + px);
+        margin: 0 (-($columnGutter/2 / 10) + rem);
         max-width: none;
         *zoom: 1; 
     }
@@ -44,8 +44,8 @@
 }
 
 .columns {
-    padding: 0 ($columnGutter/2 * 10) + px;
-    padding: 0 ($columnGutter/2) + rem;
+    padding: 0 ($columnGutter/2) + px;
+    padding: 0 ($columnGutter/2 / 10) + rem;
     position: relative;
     float: $defaultFloat;
 
