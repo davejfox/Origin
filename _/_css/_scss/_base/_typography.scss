@@ -1,28 +1,35 @@
 h1, h2, h3, h4, h5, h6,
-.beta, .gamma, .delta, .epsilon, .zeta {
+.alpha, .beta, .gamma, .delta, .epsilon, .zeta {
+	color: $titleColor;
 }
 
-h1, .alpha {
+h1, 
+.alpha {
 }
 
-h2, .beta {
+h2, 
+.beta {
 }
 
-h3, .gamma {
+h3, 
+.gamma {
 }
 
-h4, .delta {
+h4, 
+.delta {
 }
 
-h5, .epsilon {
+h5, 
+.epsilon {
 }
 
-h6, .zeta {
+h6, 
+.zeta {
 }
 
 p,
 li {
-
+	color: $bodyColor;
 }
 
 ol,

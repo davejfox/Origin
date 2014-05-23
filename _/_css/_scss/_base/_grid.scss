@@ -2,7 +2,7 @@
     @return percentage(($colNumber / $totalColumns));
 }
 
-@mixin grid-column($columns:false, $push:false, $pull:false) {
+@mixin grid-column($columns:false, $blockGrid:false, $push:false, $pull:false) {
 
     @if $columns {
         width: gridCalc($columns, $totalColumns);
@@ -54,90 +54,34 @@
     }
 }
 
-.large-text-center {
-    text-align: center;
+[class*="block-grid-"] {
+    display: block;
+    padding: 0;
+    margin: 0 (-($columnGutter/2) + px);
+    margin: 0 (-($columnGutter/2 / 10) + rem);
+    *zoom: 1; 
 }
 
-.large-text-left {
-    text-align: left;
+[class*="block-grid-"]:before, 
+[class*="block-grid-"]:after {
+    content: " ";
+    display: table; 
 }
 
-.large-text-right {
-    text-align: right;
+[class*="block-grid-"]:after {
+    clear: both; 
 }
 
-.columns.large-centered {
-    margin-left: auto;
-    margin-right: auto;
-    float: none; 
-}
-
-.columns.large-uncentered {
-    margin-left: 0;
-    margin-right: 0;
+[class*="block-grid-"] > li {
+    display: block;
+    height: auto;
     float: left;
-
-    &.opposite {
-        float: right;
-    }
+    padding: 0 ($columnGutter/2) + px;
+    padding: 0 ($columnGutter/2 / 10) + rem;
 }
 
-@for $i from 1 through $totalColumns {
-  .large#{-$i} { @include grid-column($columns:$i); }
-}
 
-@for $i from 0 through $totalColumns {
-  .large-push#{-$i} { @include grid-column($push:$i); }
-}
-
-@for $i from 0 through $totalColumns {
-  .large-pull#{-$i} { @include grid-column($pull:$i); }
-}
-
-@media only screen and (min-width: 48.001rem) and (max-width: 90rem) {
-
-    .medium-text-center {
-        text-align: center;
-    }
-
-    .medium-text-left {
-        text-align: left;
-    }
-
-    .medium-text-right {
-        text-align: right;
-    }
-
-    .columns.medium-centered {
-        margin-left: auto;
-        margin-right: auto;
-        float: none; 
-    }
-
-    .columns.medium-uncentered {
-        margin-left: 0;
-        margin-right: 0;
-        float: left;
-
-        &.opposite {
-            float: right;
-        }
-    }
-
-    @for $i from 1 through $totalColumns {
-      .medium#{-$i} { @include grid-column($columns:$i); }
-    }
-
-    @for $i from 0 through $totalColumns {
-      .medium-push#{-$i} { @include grid-column($push:$i); }
-    }
-
-    @for $i from 0 through $totalColumns {
-      .medium-pull#{-$i} { @include grid-column($pull:$i); }
-    }
-}
-
-@media only screen and (max-width: 30rem) {
+@media only screen {
 
     .small-text-center {
         text-align: center;
@@ -168,14 +112,203 @@
     }
 
     @for $i from 1 through $totalColumns {
-      .small#{-$i} { @include grid-column($columns:$i); }
+        .small#{-$i} { @include grid-column($columns:$i); }
     }
 
-    @for $i from 0 through $totalColumns {
-      .small-push#{-$i} { @include grid-column($push:$i); }
+    @for $i from 1 through $totalColumns {
+        .small-push#{-$i} { @include grid-column($push:$i); }
     }
 
-    @for $i from 0 through $totalColumns {
-      .small-pull#{-$i} { @include grid-column($pull:$i); }
+    @for $i from 1 through $totalColumns {
+        .small-pull#{-$i} { @include grid-column($pull:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .small-block-grid#{-$i} {
+            width: (#{100/$i})+("%");
+        }
+
+        .small-block-grid#{-$i} > li:nth-of-type(n) {
+            clear: none;   
+        }
+
+        .small-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
+            clear: both; 
+        }
+    }
+}
+
+      
+@media only screen and (min-width: (($smallscreen / 10 + .1) + rem)) {
+
+    .medium-text-center {
+        text-align: center;
+    }
+
+    .medium-text-left {
+        text-align: left;
+    }
+
+    .medium-text-right {
+        text-align: right;
+    }
+
+    .columns.medium-centered {
+        margin-left: auto;
+        margin-right: auto;
+        float: none; 
+    }
+
+    .columns.medium-uncentered {
+        margin-left: 0;
+        margin-right: 0;
+        float: left;
+
+        &.opposite {
+            float: right;
+        }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .medium#{-$i} { @include grid-column($columns:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .medium-push#{-$i} { @include grid-column($push:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .medium-pull#{-$i} { @include grid-column($pull:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .medium-block-grid#{-$i} {
+            width: (#{100/$i})+("%");
+        }
+
+        .medium-block-grid#{-$i} > li:nth-of-type(n) {
+            clear: none;   
+        }
+
+        .medium-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
+            clear: both; 
+        }
+    }
+}
+
+
+@if $pxSupport == "true" {
+
+    .large-text-center {
+        text-align: center;
+    }
+
+    .large-text-left {
+        text-align: left;
+    }
+
+    .large-text-right {
+        text-align: right;
+    }
+
+    .columns.large-centered {
+        margin-left: auto;
+        margin-right: auto;
+        float: none; 
+    }
+
+    .columns.large-uncentered {
+        margin-left: 0;
+        margin-right: 0;
+        float: left;
+
+        &.opposite {
+            float: right;
+        }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .large#{-$i} { @include grid-column($columns:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .large-push#{-$i} { @include grid-column($push:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .large-pull#{-$i} { @include grid-column($pull:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .large-block-grid#{-$i} > li {
+            width: (#{100/$i})+("%");
+        }
+
+        .large-block-grid#{-$i} > li:nth-of-type(n) {
+            clear: none;   
+        }
+
+        .large-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
+            clear: both; 
+        }
+    }
+}
+
+@else {
+    
+    @media only screen and (min-width: (($mediumscreen / 10 + .1) + rem)) {
+        .large-text-center {
+            text-align: center;
+        }
+
+        .large-text-left {
+            text-align: left;
+        }
+
+        .large-text-right {
+            text-align: right;
+        }
+
+        .columns.large-centered {
+            margin-left: auto;
+            margin-right: auto;
+            float: none; 
+        }
+
+        .columns.large-uncentered {
+            margin-left: 0;
+            margin-right: 0;
+            float: left;
+
+            &.opposite {
+                float: right;
+            }
+        }
+
+        @for $i from 1 through $totalColumns {
+            .large#{-$i} { @include grid-column($columns:$i); }
+        }
+
+        @for $i from 1 through $totalColumns {
+            .large-push#{-$i} { @include grid-column($push:$i); }
+        }
+
+        @for $i from 1 through $totalColumns {
+            .large-pull#{-$i} { @include grid-column($pull:$i); }
+        }
+
+        @for $i from 1 through $totalColumns {
+            .large-block-grid#{-$i} > li {
+                width: (#{100/$i})+("%");
+            }
+
+            .large-block-grid#{-$i} > li:nth-of-type(n) {
+                clear: none;   
+            }
+
+            .large-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
+                clear: both; 
+            }
+        }
     }
 }
