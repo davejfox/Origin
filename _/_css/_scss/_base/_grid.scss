@@ -80,202 +80,29 @@
     padding: 0 ($columnGutter/2 / 10) + rem;
 }
 
+@mixin grid($sizeName, $kickIn) {
 
-@media only screen {
+    @media only screen and (min-width: (($kickIn / 10) + rem)) {
 
-    .small-text-center {
-        text-align: center;
-    }
-
-    .small-text-left {
-        text-align: left;
-    }
-
-    .small-text-right {
-        text-align: right;
-    }
-
-    .columns.small-centered {
-        margin-left: auto;
-        margin-right: auto;
-        float: none; 
-    }
-
-    .columns.small-uncentered {
-        margin-left: 0;
-        margin-right: 0;
-        float: left;
-
-        &.opposite {
-            float: right;
-        }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .small#{-$i} { @include grid-column($columns:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .small-push#{-$i} { @include grid-column($push:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .small-pull#{-$i} { @include grid-column($pull:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .small-block-grid#{-$i} {
-            width: (#{100/$i})+("%");
-        }
-
-        .small-block-grid#{-$i} > li:nth-of-type(n) {
-            clear: none;   
-        }
-
-        .small-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
-            clear: both; 
-        }
-    }
-}
-
-      
-@media only screen and (min-width: (($smallscreen / 10 + .1) + rem)) {
-
-    .medium-text-center {
-        text-align: center;
-    }
-
-    .medium-text-left {
-        text-align: left;
-    }
-
-    .medium-text-right {
-        text-align: right;
-    }
-
-    .columns.medium-centered {
-        margin-left: auto;
-        margin-right: auto;
-        float: none; 
-    }
-
-    .columns.medium-uncentered {
-        margin-left: 0;
-        margin-right: 0;
-        float: left;
-
-        &.opposite {
-            float: right;
-        }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .medium#{-$i} { @include grid-column($columns:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .medium-push#{-$i} { @include grid-column($push:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .medium-pull#{-$i} { @include grid-column($pull:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .medium-block-grid#{-$i} {
-            width: (#{100/$i})+("%");
-        }
-
-        .medium-block-grid#{-$i} > li:nth-of-type(n) {
-            clear: none;   
-        }
-
-        .medium-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
-            clear: both; 
-        }
-    }
-}
-
-
-@if $pxSupport == "true" {
-
-    .large-text-center {
-        text-align: center;
-    }
-
-    .large-text-left {
-        text-align: left;
-    }
-
-    .large-text-right {
-        text-align: right;
-    }
-
-    .columns.large-centered {
-        margin-left: auto;
-        margin-right: auto;
-        float: none; 
-    }
-
-    .columns.large-uncentered {
-        margin-left: 0;
-        margin-right: 0;
-        float: left;
-
-        &.opposite {
-            float: right;
-        }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .large#{-$i} { @include grid-column($columns:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .large-push#{-$i} { @include grid-column($push:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .large-pull#{-$i} { @include grid-column($pull:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .large-block-grid#{-$i} > li {
-            width: (#{100/$i})+("%");
-        }
-
-        .large-block-grid#{-$i} > li:nth-of-type(n) {
-            clear: none;   
-        }
-
-        .large-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
-            clear: both; 
-        }
-    }
-}
-
-@else {
-    
-    @media only screen and (min-width: (($mediumscreen / 10 + .1) + rem)) {
-        .large-text-center {
+        .#{$sizeName}-text-center {
             text-align: center;
         }
 
-        .large-text-left {
+        .#{$sizeName}-text-left {
             text-align: left;
         }
 
-        .large-text-right {
+        .#{$sizeName}-text-right {
             text-align: right;
         }
 
-        .columns.large-centered {
+        .columns.#{$sizeName}-centered {
             margin-left: auto;
             margin-right: auto;
             float: none; 
         }
 
-        .columns.large-uncentered {
+        .columns.#{$sizeName}-uncentered {
             margin-left: 0;
             margin-right: 0;
             float: left;
@@ -286,29 +113,34 @@
         }
 
         @for $i from 1 through $totalColumns {
-            .large#{-$i} { @include grid-column($columns:$i); }
+            .#{$sizeName}#{-$i} { @include grid-column($columns:$i); }
         }
 
         @for $i from 1 through $totalColumns {
-            .large-push#{-$i} { @include grid-column($push:$i); }
+            .#{$sizeName}-push#{-$i} { @include grid-column($push:$i); }
         }
 
         @for $i from 1 through $totalColumns {
-            .large-pull#{-$i} { @include grid-column($pull:$i); }
+            .#{$sizeName}-pull#{-$i} { @include grid-column($pull:$i); }
         }
 
         @for $i from 1 through $totalColumns {
-            .large-block-grid#{-$i} > li {
+            .#{$sizeName}-block-grid#{-$i} {
                 width: (#{100/$i})+("%");
             }
 
-            .large-block-grid#{-$i} > li:nth-of-type(n) {
+            .#{$sizeName}-block-grid#{-$i} > li:nth-of-type(n) {
                 clear: none;   
             }
 
-            .large-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
+            .#{$sizeName}-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
                 clear: both; 
             }
         }
     }
 }
+
+@include grid(xsmall, 0);
+@include grid(small, 300);
+@include grid(medium, 481);
+@include grid(large, 901);
