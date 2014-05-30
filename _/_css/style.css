@@ -1213,5 +1213,13 @@ p,
 li {
   color: #777777; }
 
+h1, h2, h3, h4, h5, h6,
+.alpha, .beta, .gamma, .delta, .epsilon, .zeta {
+  color: #333333; }
+
+p,
+li {
+  color: #777777; }
+
 h1 {
   font-size: 4rem; }
