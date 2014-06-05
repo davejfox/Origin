@@ -59,7 +59,6 @@
     padding: 0;
     margin: 0 (-($columnGutter/2) + px);
     margin: 0 (-($columnGutter/2 / 10) + rem);
-    *zoom: 1; 
 }
 
 [class*="block-grid-"]:before, 
@@ -76,13 +75,15 @@
     display: block;
     height: auto;
     float: left;
+    list-style: none;
+    margin: 0;
     padding: 0 ($columnGutter/2) + px;
     padding: 0 ($columnGutter/2 / 10) + rem;
 }
 
-@mixin grid($sizeName, $kickIn) {
+@mixin gridSize($sizeName, $kickIn) {
 
-    @media only screen and (min-width: (($kickIn / 10) + rem)) {
+    @media only screen and (min-width: (($kickIn + 1) + px)), only screen and (min-width: (($kickIn / 10 + 0.1) + rem)) {
 
         .#{$sizeName}-text-center {
             text-align: center;
@@ -125,7 +126,7 @@
         }
 
         @for $i from 1 through $totalColumns {
-            .#{$sizeName}-block-grid#{-$i} {
+            .#{$sizeName}-block-grid#{-$i} > li {
                 width: (#{100/$i})+("%");
             }
 
@@ -140,7 +141,69 @@
     }
 }
 
-@include grid(xsmall, 0);
-@include grid(small, 300);
-@include grid(medium, 481);
-@include grid(large, 901);
+//----------------------------------------------------------------
+//  Grid Sizes
+//----------------------------------------------------------------
+// Additional grid sizes can be added here.
+@include gridSize("small", 0);
+@include gridSize("medium", 480);
+
+@if $pxSupport == "true" {
+    .large-text-center {
+        text-align: center;
+    }
+
+    .large-text-left {
+        text-align: left;
+    }
+
+    .large-text-right {
+        text-align: right;
+    }
+
+    .columns.large-centered {
+        margin-left: auto;
+        margin-right: auto;
+        float: none; 
+    }
+
+    .columns.large-uncentered {
+        margin-left: 0;
+        margin-right: 0;
+        float: left;
+
+        &.opposite {
+            float: right;
+        }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .large#{-$i} { @include grid-column($columns:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .large-push#{-$i} { @include grid-column($push:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .large-pull#{-$i} { @include grid-column($pull:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .large-block-grid#{-$i} > li {
+            width: (#{100/$i})+("%");
+        }
+
+        .large-block-grid#{-$i} > li:nth-of-type(n) {
+            clear: none;   
+        }
+
+        .large-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
+            clear: both; 
+        }
+    }
+}
+
+@else {
+    @include gridSize("large", 900);
+}
