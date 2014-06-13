@@ -145,8 +145,9 @@
 //  Grid Sizes
 //----------------------------------------------------------------
 // Additional grid sizes can be added here.
-@include gridSize("small", 0);
-@include gridSize("medium", 480);
+@include gridSize("xsmall", $xsmallScreen);
+@include gridSize("small", $smallScreen);
+@include gridSize("medium", $mediumScreen);
 
 @if $pxSupport == "true" {
     .large-text-center {
@@ -205,5 +206,5 @@
 }
 
 @else {
-    @include gridSize("large", 900);
+    @include gridSize("large", $largeScreen);
 }

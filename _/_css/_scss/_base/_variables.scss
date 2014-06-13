@@ -16,8 +16,11 @@ $columnGutter: 			40;		// *
 $totalColumns: 			12;
 $defaultFloat: 			left;
 $oppositeDirection: 	right;
-$smallscreen: 			480;	// Cut off point for 'small' breakpoint
-$mediumscreen: 			900;	// Cut off point for 'medium' breakpoint
+
+$xsmallScreen:			0;
+$smallScreen:			480;
+$mediumScreen:			800;
+$largeScreen: 			1000;
 
 
 //----------------------------------------------------------------
