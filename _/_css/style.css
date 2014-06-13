@@ -1,3 +1,10 @@
+/* 
+	Built with Origin by Dave J. Fox
+	Twitter: 	@davejfox
+	Github: 	davejfox
+
+	Free to use, if you make something cool show me! 
+*/
 *,
 *:before,
 *:after {
@@ -1214,10 +1221,38 @@ p,
 li {
   color: #777777; }
 
-h1, h2, h3, h4, h5, h6,
-.alpha, .beta, .gamma, .delta, .epsilon, .zeta {
-  color: #333333; }
+.fl {
+  float: left; }
 
-p,
-li {
-  color: #777777; }
+.fr {
+  float: right; }
+
+.clearfix:after {
+  content: "";
+  width: 100%;
+  height: 0;
+  display: block;
+  clear: both; }
+
+.text-center {
+  text-align: center; }
+
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }
+
+.bg-white {
+  background: white; }
+
+.bg-black {
+  background: black; }
+  .bg-black * {
+    color: white; }
+
+.border-white {
+  border: 0.1rem solid white; }
+
+.border-black {
+  border: 0.1rem solid black; }

@@ -1,0 +1,62 @@
+//----------------------------------------------------------------
+//  General
+//----------------------------------------------------------------
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix,
+%clearfix {
+    
+    &:after {
+        content: "";
+        width: 100%;
+        height: 0;
+        display: block;
+        clear: both;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
+//----------------------------------------------------------------
+//  Backgrounds & Containers
+//----------------------------------------------------------------
+.bg-white {
+    background: $white;
+}
+
+.bg-black {
+    background: $black;
+
+    * {
+        color: $white;
+    }
+}
+
+
+//----------------------------------------------------------------
+//  Borders
+//----------------------------------------------------------------
+.border-white {
+    @include border(1, solid, $white);
+}
+
+.border-black {
+    @include border(1, solid, $black);
+}
