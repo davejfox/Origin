@@ -150,6 +150,7 @@
 @include gridSize("medium", $mediumScreen);
 
 @if $pxSupport == "true" {
+
     .large-text-center {
         text-align: center;
     }
@@ -194,11 +195,9 @@
         .large-block-grid#{-$i} > li {
             width: (#{100/$i})+("%");
         }
-
         .large-block-grid#{-$i} > li:nth-of-type(n) {
             clear: none;   
         }
-
         .large-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
             clear: both; 
         }
