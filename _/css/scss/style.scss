@@ -1,0 +1,35 @@
+/* 
+	Built with Origin by Dave J. Fox
+	Twitter: 	@davejfox
+	Github: 	davejfox
+
+	Free to use, if you make something cool show me! 
+*/
+
+// BASE STYLES
+// ---------------------------------------------------------
+@import "base/_variables.scss";
+@import "base/_mixins.scss";
+@import "base/_reset.scss";
+@import "base/_typography.scss";
+@import "base/_grid.scss";
+@import "base/_common.scss";
+@import "base/_forms.scss";
+@import "base/_tables.scss";
+//@import "base/_proto.scss";  // Uncomment this if you want basic styles for prototpying. 
+
+
+// VENDOR 
+// ---------------------------------------------------------
+//@import "vendor/_name-here.scss";
+
+
+// MODULES
+// ---------------------------------------------------------
+@import "modules/_header.scss";
+@import "modules/_footer.scss";
+
+
+// REGIONS
+// ---------------------------------------------------------
+@import "regions/_homepage.scss";

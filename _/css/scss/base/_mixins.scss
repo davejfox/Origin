@@ -23,11 +23,11 @@
 
 	@font-face {
 		font-family: $fontName;
-		src: url("/_/_css/_fonts/" + $fontLongname + "/" + $fontLongname + ".eot");
-		src: url("/_/_css/_fonts/" + $fontLongname + "/" + $fontLongname + ".eot?#iefix") format("embedded-opentype"),
-			 url("/_/_css/_fonts/" + $fontLongname + "/" + $fontLongname + ".woff") format("woff"),
-			 url("/_/_css/_fonts/" + $fontLongname + "/" + $fontLongname + ".ttf") format("truetype"),
-			 url("/_/_css/_fonts/" + $fontLongname + "/" + $fontLongname + ".svg#" + $fontName + "") format("svg");
+		src: url("/_/css/fonts/" + $fontLongname + "/" + $fontLongname + ".eot");
+		src: url("/_/css/fonts/" + $fontLongname + "/" + $fontLongname + ".eot?#iefix") format("embedded-opentype"),
+			 url("/_/css/fonts/" + $fontLongname + "/" + $fontLongname + ".woff") format("woff"),
+			 url("/_/css/fonts/" + $fontLongname + "/" + $fontLongname + ".ttf") format("truetype"),
+			 url("/_/css/fonts/" + $fontLongname + "/" + $fontLongname + ".svg#" + $fontName + "") format("svg");
 	}	
 }
 
@@ -132,7 +132,7 @@
 // @mixin backgroundImage($fileName, $ext, $vars, $highRes:"false") {
 
 // 	@if $highRes == "true" {
-//     	background: url(/_/_images/#{$fileName}.#{$ext}) $vars;
+//     	background: url(/_/images/#{$fileName}.#{$ext}) $vars;
 		
 
 // 			  /* Retina-specific stuff here */
@@ -141,7 +141,7 @@
 // 	}
 
 //     @else {
-// 		background: url(/_/_images/#{$fileName}.#{$ext}) $vars;
+// 		background: url(/_/images/#{$fileName}.#{$ext}) $vars;
 //     }
 // }
 
