@@ -16,16 +16,18 @@
 
 //----------------------------------------------------------------
 //	Font Family
+//  NOTE: May need to be edited, depending on what formats are 
+//  provided by the foundry that you are using.
 //----------------------------------------------------------------
 @mixin font($fontName, $fontLongname) {
 
 	@font-face {
 		font-family: $fontName;
-		src: url("/css/fonts/" + $fontLongname + "/" + $fontLongname + ".eot");
-		src: url("/css/fonts/" + $fontLongname + "/" + $fontLongname + ".eot?#iefix") format("embedded-opentype"),
-			 url("/css/fonts/" + $fontLongname + "/" + $fontLongname + ".woff") format("woff"),
-			 url("/css/fonts/" + $fontLongname + "/" + $fontLongname + ".ttf") format("truetype"),
-			 url("/css/fonts/" + $fontLongname + "/" + $fontLongname + ".svg#" + $fontName + "") format("svg");
+		src: url("/_/_css/_fonts/" + $fontLongname + "/" + $fontLongname + ".eot");
+		src: url("/_/_css/_fonts/" + $fontLongname + "/" + $fontLongname + ".eot?#iefix") format("embedded-opentype"),
+			 url("/_/_css/_fonts/" + $fontLongname + "/" + $fontLongname + ".woff") format("woff"),
+			 url("/_/_css/_fonts/" + $fontLongname + "/" + $fontLongname + ".ttf") format("truetype"),
+			 url("/_/_css/_fonts/" + $fontLongname + "/" + $fontLongname + ".svg#" + $fontName + "") format("svg");
 	}	
 }
 
@@ -74,25 +76,13 @@
 
 
 //----------------------------------------------------------------
-//	Opacity
-//----------------------------------------------------------------
-@mixin opacity($opacity) {
-	$opacity-ie: $opacity * 100;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="$opacity * 100")";
-	filter: alpha(opacity=$opacity-ie);
-	opacity: $opacity;
-	zoom: 1;
-}
-
-
-//----------------------------------------------------------------
 //	Property & Values
 //----------------------------------------------------------------
 @function prop-count($num) {
 	@return $num / ($num * 0 + 1);
 }
 
-@mixin property($styleProperty, $values...) {
+@mixin prop($styleProperty, $values...) {
 	$max: length($values);
 	$pxValues: '';
 	$remValues: '';
@@ -137,23 +127,23 @@
 
 
 //----------------------------------------------------------------
-//	Image with high res version
+//	Image with high res version (WORK IN PROGRESS)
 //----------------------------------------------------------------
-@mixin backgroundImage($fileName, $ext, $vars, $highRes:"false") {
+// @mixin backgroundImage($fileName, $ext, $vars, $highRes:"false") {
 
-	@if $highRes == "true" {
-    	background: url(/_/_images/#{$fileName}.#{$ext}) $vars;
+// 	@if $highRes == "true" {
+//     	background: url(/_/_images/#{$fileName}.#{$ext}) $vars;
 		
 
-			  /* Retina-specific stuff here */
+// 			  /* Retina-specific stuff here */
 
 
-	}
+// 	}
 
-    @else {
-		background: url(/_/_images/#{$fileName}.#{$ext}) $vars;
-    }
-}
+//     @else {
+// 		background: url(/_/_images/#{$fileName}.#{$ext}) $vars;
+//     }
+// }
 
 
 //----------------------------------------------------------------
@@ -191,7 +181,8 @@
 //	Browser Pre-Fix
 //----------------------------------------------------------------
 @mixin prefix($attr, $value) {
-	-webkit-border-#{$attr}: $value;
-   	   -moz-border-#{$attr}: $value;
-			border-#{$attr}: $value;
+	-webkit-#{$attr}: $value;
+   	   -moz-#{$attr}: $value;
+   	    -ms-#{$attr}: $value;
+			#{$attr}: $value;
 }
