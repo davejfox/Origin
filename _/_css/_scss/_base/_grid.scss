@@ -144,9 +144,61 @@
 //----------------------------------------------------------------
 //  Grid Sizes
 //----------------------------------------------------------------
+@media only screen {
+    .small-text-center {
+        text-align: center;
+    }
+
+    .small-text-left {
+        text-align: left;
+    }
+
+    .small-text-right {
+        text-align: right;
+    }
+
+    .columns.small-centered {
+        margin-left: auto;
+        margin-right: auto;
+        float: none; 
+    }
+
+    .columns.small-uncentered {
+        margin-left: 0;
+        margin-right: 0;
+        float: left;
+
+        &.opposite {
+            float: right;
+        }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .small#{-$i} { @include grid-column($columns:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .small-push#{-$i} { @include grid-column($push:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .small-pull#{-$i} { @include grid-column($pull:$i); }
+    }
+
+    @for $i from 1 through $totalColumns {
+        .small-block-grid#{-$i} > li {
+            width: (#{100/$i})+("%");
+        }
+        .small-block-grid#{-$i} > li:nth-of-type(n) {
+            clear: none;   
+        }
+        .small-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
+            clear: both; 
+        }
+    }
+}
+
 // Additional grid sizes can be added here.
-@include gridSize("xsmall", $xsmallScreen);
-@include gridSize("small", $smallScreen);
 @include gridSize("medium", $mediumScreen);
 
 @if $pxSupport == "true" {
