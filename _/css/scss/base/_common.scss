@@ -15,8 +15,8 @@
 
 .circle,
 %circle {
-    @include prefix(background-clip, padding-box);
-    @include prefix(border-radius, 50%);
+    @include pre(background-clip, padding-box);
+    @include pre(border-radius, 50%);
     overflow: hidden;
 }
 
@@ -81,7 +81,7 @@ embed {
 }
 
 .has-radius {
-    @include borderRadius(3);
+    @include radius(3);
 }
 
 

@@ -83,7 +83,7 @@
 
 @mixin gridSize($sizeName, $kickIn) {
 
-    @media only screen and (min-width: (($kickIn + 1) + px)), only screen and (min-width: (($kickIn / 10 + 0.1) + rem)) {
+    @media only screen and (min-width: (($kickIn + 1) + px)) {
 
         .#{$sizeName}-text-center {
             text-align: center;
@@ -200,62 +200,4 @@
 
 // Additional grid sizes can be added here.
 @include gridSize("medium", $mediumScreen);
-
-@if $pxSupport == "true" {
-
-    .large-text-center {
-        text-align: center;
-    }
-
-    .large-text-left {
-        text-align: left;
-    }
-
-    .large-text-right {
-        text-align: right;
-    }
-
-    .columns.large-centered {
-        margin-left: auto;
-        margin-right: auto;
-        float: none; 
-    }
-
-    .columns.large-uncentered {
-        margin-left: 0;
-        margin-right: 0;
-        float: left;
-
-        &.opposite {
-            float: right;
-        }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .large#{-$i} { @include grid-column($columns:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .large-push#{-$i} { @include grid-column($push:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .large-pull#{-$i} { @include grid-column($pull:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .large-block-grid#{-$i} > li {
-            width: (#{100/$i})+("%");
-        }
-        .large-block-grid#{-$i} > li:nth-of-type(n) {
-            clear: none;   
-        }
-        .large-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
-            clear: both; 
-        }
-    }
-}
-
-@else {
-    @include gridSize("large", $largeScreen);
-}
+@include gridSize("large", $largeScreen);

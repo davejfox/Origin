@@ -1,7 +1,7 @@
 //----------------------------------------------------------------
 //	Font Size
 //----------------------------------------------------------------
-@mixin fontsize($value) {
+@mixin fontSize($value) {
 
     @if $pxSupport == "true" {
     	font-size: ($value) + px;
@@ -16,9 +16,9 @@
 
 //----------------------------------------------------------------
 //	Font Family
+//----------------------------------------------------------------
 //  NOTE: May need to be edited, depending on what formats are 
 //  provided by the foundry that you are using.
-//----------------------------------------------------------------
 @mixin font($fontName, $fontLongname) {
 
 	@font-face {
@@ -31,10 +31,12 @@
 	}	
 }
 
+
 //----------------------------------------------------------------
 //	Border Radius
 //----------------------------------------------------------------
-@mixin borderRadius($values...) {
+// NOTE: only use for defined widths, not percentages.
+@mixin radius($values...) {
 
 	$max: length($values);
 	$pxValues: '';
@@ -119,7 +121,7 @@
 //----------------------------------------------------------------
 //	Transition
 //----------------------------------------------------------------
-@mixin transition($effect...) {
+@mixin trans($effect...) {
 	-webkit-transition: $effect;
    	   -moz-transition: $effect;
 			transition: $effect;
@@ -180,7 +182,7 @@
 //----------------------------------------------------------------
 //	Browser Pre-Fix
 //----------------------------------------------------------------
-@mixin prefix($attr, $value) {
+@mixin pre($attr, $value) {
 	-webkit-#{$attr}: $value;
    	   -moz-#{$attr}: $value;
    	    -ms-#{$attr}: $value;

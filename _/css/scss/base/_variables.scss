@@ -1,7 +1,9 @@
 //----------------------------------------------------------------
 //	Internet Explorer 8 / Opera Mini Support
 //----------------------------------------------------------------
-// Change to "true" if you wish to support IE8 and Opera Mini.
+// Change to "true" if you wish to support IE8 and Opera Mini. This
+// will add pixel support to measurements. You may need to use 
+// additional polyfills for IE8, such as respond.js and/or HTML5 Shiv
 $pxSupport: 			"false";  
 
 
