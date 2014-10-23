@@ -16,12 +16,12 @@
 @import "base/_common.scss";
 @import "base/_forms.scss";
 @import "base/_tables.scss";
-//@import "base/_proto.scss";  // Uncomment this if you want basic styles for prototpying. 
+@import "base/_proto.scss";  // Uncomment this if you want basic styles for prototpying, remove the line completely if you don't.
 
 
 // VENDOR 
 // ---------------------------------------------------------
-//@import "vendor/_name-here.scss";
+//@import "vendor/_third-party-stylesheets-go-here.scss";
 
 
 // MODULES

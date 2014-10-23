@@ -53,3 +53,21 @@ ol {
 
     }
 }
+
+.bg-grey {
+	background: #ccc;
+}
+
+
+
+
+#demo {
+	
+	#grid-demo {
+
+		[class*="-only"] {
+			@include fontSize(10);
+			color: #000;
+		}
+	}
+}
