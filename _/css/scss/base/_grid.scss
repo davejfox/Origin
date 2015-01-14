@@ -43,6 +43,8 @@
     }
 }
 
+.col,
+.column,
 .columns {
     padding: 0 ($columnGutter/2) + px;
     padding: 0 ($columnGutter/2 / 10) + rem;
@@ -97,19 +99,24 @@
             text-align: right;
         }
 
-        .columns.#{$sizeName}-centered {
-            margin-left: auto;
-            margin-right: auto;
-            float: none; 
-        }
+        .col,
+        .column,
+        .columns {
+            
+            &.#{$sizeName}-centered {
+                margin-left: auto;
+                margin-right: auto;
+                float: none; 
+            }
 
-        .columns.#{$sizeName}-uncentered {
-            margin-left: 0;
-            margin-right: 0;
-            float: left;
+            &.#{$sizeName}-uncentered {
+                margin-left: 0;
+                margin-right: 0;
+                float: left;
 
-            &.opposite {
-                float: right;
+                &.opposite {
+                    float: right;
+                }
             }
         }
 
@@ -157,19 +164,24 @@
         text-align: right;
     }
 
-    .columns.small-centered {
-        margin-left: auto;
-        margin-right: auto;
-        float: none; 
-    }
+    .col,
+    .column,
+    .columns {
+        
+        &.small-centered {
+            margin-left: auto;
+            margin-right: auto;
+            float: none; 
+        }
 
-    .columns.small-uncentered {
-        margin-left: 0;
-        margin-right: 0;
-        float: left;
+        &.small-uncentered {
+            margin-left: 0;
+            margin-right: 0;
+            float: left;
 
-        &.opposite {
-            float: right;
+            &.opposite {
+                float: right;
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 //----------------------------------------------------------------
 //	Font Size
 //----------------------------------------------------------------
+//  Written as: @include fontSize(16);
 @mixin fontSize($value) {
 
     @if $pxSupport == "true" {
@@ -19,6 +20,8 @@
 //----------------------------------------------------------------
 //  NOTE: May need to be edited, depending on what formats are 
 //  provided by the foundry that you are using.
+//
+//  Written as: @include font(Open Sans, open-sans);
 @mixin font($fontName, $fontLongname) {
 
 	@font-face {
@@ -35,7 +38,10 @@
 //----------------------------------------------------------------
 //	Border Radius
 //----------------------------------------------------------------
-// NOTE: only use for defined widths, not percentages.
+//  NOTE: only use for defined widths, not percentages. 
+//  Use  @include pre(border-radius, 50%); for percentages.
+//
+//  Written as: @include radius(5); OR @include radius(5, 10); || Four values max.
 @mixin radius($values...) {
 
 	$max: length($values);
@@ -80,6 +86,7 @@
 //----------------------------------------------------------------
 //	Property & Values
 //----------------------------------------------------------------
+//  Written as: @include prop(top, 10); OR @include prop(margin, 20, 10); || Four values max.
 @function prop-count($num) {
 	@return $num / ($num * 0 + 1);
 }
@@ -119,38 +126,9 @@
 
 
 //----------------------------------------------------------------
-//	Transition
-//----------------------------------------------------------------
-@mixin trans($effect...) {
-	-webkit-transition: $effect;
-   	   -moz-transition: $effect;
-			transition: $effect;
-}
-
-
-//----------------------------------------------------------------
-//	Image with high res version (WORK IN PROGRESS)
-//----------------------------------------------------------------
-// @mixin backgroundImage($fileName, $ext, $vars, $highRes:"false") {
-
-// 	@if $highRes == "true" {
-//     	background: url(/_/images/#{$fileName}.#{$ext}) $vars;
-		
-
-// 			  /* Retina-specific stuff here */
-
-
-// 	}
-
-//     @else {
-// 		background: url(/_/images/#{$fileName}.#{$ext}) $vars;
-//     }
-// }
-
-
-//----------------------------------------------------------------
 //	Border
 //----------------------------------------------------------------
+//  Written as: @include border(1, solid, #000);
 @mixin border($width, $style, $color, $side:"false") {
 
 	@if $pxSupport == "true" {
@@ -182,6 +160,7 @@
 //----------------------------------------------------------------
 //	Browser Pre-Fix
 //----------------------------------------------------------------
+//  Written as: @include pre(transition, color 0.3s ease); OR @include pre(border-radius, 50%);
 @mixin pre($attr, $value) {
 	-webkit-#{$attr}: $value;
    	   -moz-#{$attr}: $value;
