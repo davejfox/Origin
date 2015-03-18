@@ -2,10 +2,6 @@
 	opacity: 1;
 }
 
-:-moz-placeholder { 
-	opacity: 1;
-}
-
 ::-moz-placeholder {
    opacity: 1; 
 }
@@ -27,5 +23,24 @@ fieldset {
 input {
 }
 
-select {
+.selectWrapper {
+	
+	select {
+	}
+}
+
+input,
+textarea {
+
+   &:focus {
+   }
+}
+
+input[type="text"],
+input[type="search"],
+input[type="email"], 
+textarea {
+
+   &:focus {
+   }
 }
