@@ -26,11 +26,19 @@
 
 	@font-face {
 		font-family: $fontName;
+<<<<<<< HEAD:_/scss/base/_mixins.scss
 		src: url("_/fonts/" + $fontLongname + "/" + $fontLongname + ".eot");
 		src: url("_/fonts/" + $fontLongname + "/" + $fontLongname + ".eot?#iefix") format("embedded-opentype"),
 			 url("_/fonts/" + $fontLongname + "/" + $fontLongname + ".woff") format("woff"),
 			 url("_/fonts/" + $fontLongname + "/" + $fontLongname + ".ttf") format("truetype"),
 			 url("_/fonts/" + $fontLongname + "/" + $fontLongname + ".svg#" + $fontName + "") format("svg");
+=======
+		src: url("../fonts/" + $fontLongname + "/" + $fontLongname + ".eot");
+		src: url("../fonts/" + $fontLongname + "/" + $fontLongname + ".eot?#iefix") format("embedded-opentype"),
+			 url("../fonts/" + $fontLongname + "/" + $fontLongname + ".woff") format("woff"),
+			 url("../fonts/" + $fontLongname + "/" + $fontLongname + ".ttf") format("truetype"),
+			 url("../fonts/" + $fontLongname + "/" + $fontLongname + ".svg#" + $fontName + "") format("svg");
+>>>>>>> origin/master:_/scss/base/_mixins.scss
 	}	
 }
 
@@ -166,6 +174,7 @@
 			transition: $effect;
 }
 
+<<<<<<< HEAD:_/scss/base/_mixins.scss
 //----------------------------------------------------------------
 //	Square
 //----------------------------------------------------------------
@@ -183,6 +192,8 @@
     }
 }
 
+=======
+>>>>>>> origin/master:_/scss/base/_mixins.scss
 
 //----------------------------------------------------------------
 //	Browser Pre-Fix
