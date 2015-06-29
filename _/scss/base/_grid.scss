@@ -26,6 +26,11 @@
     max-width: ($rowWidth / 10) + rem;
     *zoom: 1;
 
+    &.half-row {
+        max-width: ($rowWidth / 2) + px;
+        max-width: ($rowWidth / 20) + rem;
+    }
+
     .row {
         width: auto;
         margin: 0 (-($columnGutter/2) + px);
@@ -86,6 +91,22 @@
 @mixin gridSize($sizeName, $kickIn) {
 
     @media only screen and (min-width: ($kickIn + px)) {
+
+        .#{$sizeName}-hidden {
+            display: none;
+        }
+
+        .#{$sizeName}-block {
+            display: block;
+        }
+
+        .#{$sizeName}-inline {
+            display: inline;
+        }
+
+        .#{$sizeName}-inline-block {
+            display: inline-block;
+        }
 
         .#{$sizeName}-text-center {
             text-align: center;
@@ -148,10 +169,28 @@
     }
 }
 
+
 //----------------------------------------------------------------
 //  Grid Sizes
 //----------------------------------------------------------------
 @media only screen {
+
+    .xsmall-hidden {
+        display: none;
+    }
+
+    .xsmall-block {
+        display: block;
+    }
+
+    .xsmall-inline {
+        display: inline;
+    }
+
+    .xsmall-inline-block {
+        display: inline-block;
+    }
+
     .xsmall-text-center {
         text-align: center;
     }

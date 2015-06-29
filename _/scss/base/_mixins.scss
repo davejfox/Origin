@@ -26,11 +26,11 @@
 
 	@font-face {
 		font-family: $fontName;
-		src: url("/_/css/fonts/" + $fontLongname + "/" + $fontLongname + ".eot");
-		src: url("/_/css/fonts/" + $fontLongname + "/" + $fontLongname + ".eot?#iefix") format("embedded-opentype"),
-			 url("/_/css/fonts/" + $fontLongname + "/" + $fontLongname + ".woff") format("woff"),
-			 url("/_/css/fonts/" + $fontLongname + "/" + $fontLongname + ".ttf") format("truetype"),
-			 url("/_/css/fonts/" + $fontLongname + "/" + $fontLongname + ".svg#" + $fontName + "") format("svg");
+		src: url("_/fonts/" + $fontLongname + "/" + $fontLongname + ".eot");
+		src: url("_/fonts/" + $fontLongname + "/" + $fontLongname + ".eot?#iefix") format("embedded-opentype"),
+			 url("_/fonts/" + $fontLongname + "/" + $fontLongname + ".woff") format("woff"),
+			 url("_/fonts/" + $fontLongname + "/" + $fontLongname + ".ttf") format("truetype"),
+			 url("_/fonts/" + $fontLongname + "/" + $fontLongname + ".svg#" + $fontName + "") format("svg");
 	}	
 }
 
@@ -153,6 +153,33 @@
 		@else {
 			border#{-$side}: ($width / 10)+rem $style $color;
 		}
+    }
+}
+
+
+//----------------------------------------------------------------
+//	Transition
+//----------------------------------------------------------------
+@mixin trans($effect...) {
+	-webkit-transition: $effect;
+	   -moz-transition: $effect;
+			transition: $effect;
+}
+
+//----------------------------------------------------------------
+//	Square
+//----------------------------------------------------------------
+@mixin sq($value) {
+	@if $pxSupport == "true" {
+    	width: ($value)+px; 
+		width: ($value / 10)+rem;
+		height: ($value)+px; 
+		height: ($value / 10)+rem; 
+    }
+
+    @else {
+		width: ($value / 10)+rem;
+		height: ($value / 10)+rem; 
     }
 }
 
