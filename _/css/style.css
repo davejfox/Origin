@@ -1336,9 +1336,6 @@ object,
 embed {
   max-width: 100%; }
 
-.overflow-hidden {
-  overflow: hidden; }
-
 .fl {
   float: left; }
 
@@ -1354,6 +1351,20 @@ embed {
 .text-right {
   text-align: right; }
 
+.has-radius {
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  border-radius: 0.3rem; }
+
+.no-wrap {
+  white-space: nowrap; }
+
+.overflow-hidden {
+  overflow: hidden; }
+
+.hidden {
+  display: none; }
+
 .v-wrapper {
   display: table;
   height: 100%;
@@ -1362,17 +1373,6 @@ embed {
     display: table-cell;
     height: 100%;
     vertical-align: middle; }
-
-.has-radius {
-  -webkit-border-radius: 0.3rem;
-  -moz-border-radius: 0.3rem;
-  border-radius: 0.3rem; }
-
-.noWrap {
-  white-space: nowrap; }
-
-.hidden {
-  display: none; }
 
 .bg-white {
   background: #fff; }
@@ -1417,6 +1417,9 @@ embed {
 
 [class*="border-white"] {
   border-color: #fff; }
+
+[class*="border-black"] {
+  border-color: #000; }
 
 ::-webkit-input-placeholder {
   opacity: 1; }

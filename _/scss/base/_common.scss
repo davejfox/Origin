@@ -57,10 +57,6 @@ embed {
 //----------------------------------------------------------------
 //  Helper Classes
 //----------------------------------------------------------------
-.overflow-hidden {
-    overflow: hidden;
-}
-
 .fl {
     float: left;
 }
@@ -81,6 +77,22 @@ embed {
     text-align: right;
 }
 
+.has-radius {
+    @include radius(3);
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
 .v-wrapper {
     display: table;
     height: 100%;
@@ -91,18 +103,6 @@ embed {
         height: 100%;
         vertical-align: middle;
     }
-}
-
-.has-radius {
-    @include radius(3);
-}
-
-.noWrap {
-    white-space: nowrap;
-}
-
-.hidden {
-    display: none;
 }
 
 
@@ -125,6 +125,8 @@ embed {
 //----------------------------------------------------------------
 //  Borders
 //----------------------------------------------------------------
+// Can be written as classes, like .border-white, .left-border-white,
+// .thick-border-white and so on. Add more border colours below.
 [class*="border-"] {
     @include border(1, solid, transparent);
 }
@@ -167,4 +169,8 @@ embed {
 
 [class*="border-white"] {
     border-color: #fff;
+}
+
+[class*="border-black"] {
+    border-color: #000;
 }
