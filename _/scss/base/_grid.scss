@@ -1,255 +1,298 @@
-@function gridCalc($colNumber, $totalColumns) {
-    @return percentage(($colNumber / $totalColumns));
-}
-
-@mixin grid-column($columns:false, $blockGrid:false, $push:false, $pull:false) {
-
-    @if $columns {
-        width: gridCalc($columns, $totalColumns);
-    }
-
-    @if $push { 
-        #{$defaultFloat}: gridCalc($push, $totalColumns); 
-        #{$oppositeDirection}: auto; 
-    }
-
-    @if $pull { 
-        #{$oppositeDirection}: gridCalc($pull, $totalColumns); 
-        #{$defaultFloat}: auto; 
-    }
-}
-
+//----------------------------------------------------------------
+//  Rows & Columns
+//----------------------------------------------------------------
 .row {
-    width: 100%;
-    margin: 0 auto;
-    max-width: ($rowWidth) + px;
-    max-width: ($rowWidth / 10) + rem;
-    *zoom: 1;
+	width: 100%;
+	margin: 0 auto;
+	max-width: ($rowWidth) + px;
+	max-width: ($rowWidth / 10) + rem;
+	*zoom: 1;
 
-    &.half-row {
-        max-width: ($rowWidth / 2) + px;
-        max-width: ($rowWidth / 20) + rem;
-    }
+	.row {
+		width: auto;
+		margin: 0 (-($columnGutter/2) + px);
+		margin: 0 (-($columnGutter/2 / 10) + rem);
+		max-width: none;
+		*zoom: 1; 
+	}
 
-    .row {
-        width: auto;
-        margin: 0 (-($columnGutter/2) + px);
-        margin: 0 (-($columnGutter/2 / 10) + rem);
-        max-width: none;
-        *zoom: 1; 
-    }
-
-    &:after {
-        content: " ";
-        clear: both;
-        display: block;
-        width: 100%;
-        height: 0;
-    }
+	&:after {
+		content: " ";
+		clear: both;
+		display: block;
+		width: 100%;
+		height: 0;
+	}
 }
 
 .col,
 .column,
 .columns {
-    padding: 0 ($columnGutter/2) + px;
-    padding: 0 ($columnGutter/2 / 10) + rem;
-    position: relative;
-    float: $defaultFloat;
+	padding: 0 ($columnGutter/2) + px;
+	padding: 0 ($columnGutter/2 / 10) + rem;
+	position: relative;
+	float: $defaultFloat;
 
-    &:last-child {
-        float: $oppositeDirection;
-    }
+	&:last-child {
+		float: $oppositeDirection;
+	}
 }
 
+
+//----------------------------------------------------------------
+//  Block Grid
+//----------------------------------------------------------------
 [class*="block-grid-"] {
-    display: block;
-    padding: 0;
-    margin: 0 (-($columnGutter/2) + px);
-    margin: 0 (-($columnGutter/2 / 10) + rem);
+	display: block;
+	padding: 0;
+	margin: 0 (-($columnGutter/2) + px);
+	margin: 0 (-($columnGutter/2 / 10) + rem);
 }
 
 [class*="block-grid-"]:before, 
 [class*="block-grid-"]:after {
-    content: " ";
-    display: table; 
+	content: " ";
+	display: table; 
 }
 
 [class*="block-grid-"]:after {
-    clear: both; 
+	clear: both; 
 }
 
 [class*="block-grid-"] > li {
-    display: block;
-    height: auto;
-    float: left;
-    list-style: none;
-    margin: 0;
-    padding: 0 ($columnGutter/2) + px;
-    padding: 0 ($columnGutter/2 / 10) + rem;
+	display: block;
+	height: auto;
+	float: left;
+	list-style: none;
+	margin: 0;
+	padding: 0 ($columnGutter/2) + px;
+	padding: 0 ($columnGutter/2 / 10) + rem;
+}
+
+
+//----------------------------------------------------------------
+//  Grid functions & mixins
+//----------------------------------------------------------------
+@function gridCalc($colNumber, $totalColumns) {
+	@return percentage(($colNumber / $totalColumns));
+}
+
+@mixin grid-column($columns:false, $blockGrid:false, $push:false, $pull:false) {
+
+	@if $columns {
+		width: gridCalc($columns, $totalColumns);
+	}
+
+	@if $push { 
+		#{$defaultFloat}: gridCalc($push, $totalColumns); 
+		#{$oppositeDirection}: auto; 
+	}
+
+	@if $pull { 
+		#{$oppositeDirection}: gridCalc($pull, $totalColumns); 
+		#{$defaultFloat}: auto; 
+	}
 }
 
 @mixin gridSize($sizeName, $kickIn) {
 
-    @media only screen and (min-width: ($kickIn + px)) {
+	@media only screen and (min-width: ($kickIn + px)) {
 
-        .#{$sizeName}-hidden {
-            display: none;
-        }
+		.#{$sizeName}-hidden {
+			display: none;
+		}
 
-        .#{$sizeName}-block {
-            display: block;
-        }
+		.#{$sizeName}-block {
+			display: block;
+		}
 
-        .#{$sizeName}-inline {
-            display: inline;
-        }
+		.#{$sizeName}-inline {
+			display: inline;
+		}
 
-        .#{$sizeName}-inline-block {
-            display: inline-block;
-        }
+		.#{$sizeName}-inline-block {
+			display: inline-block;
+		}
 
-        .#{$sizeName}-text-center {
-            text-align: center;
-        }
+		.#{$sizeName}-text-center {
+			text-align: center;
+		}
 
-        .#{$sizeName}-text-left {
-            text-align: left;
-        }
+		.#{$sizeName}-text-left {
+			text-align: left;
+		}
 
-        .#{$sizeName}-text-right {
-            text-align: right;
-        }
+		.#{$sizeName}-text-right {
+			text-align: right;
+		}
 
-        .col,
-        .column,
-        .columns {
-            
-            &.#{$sizeName}-centered {
-                margin-left: auto;
-                margin-right: auto;
-                float: none; 
-            }
+		.#{$sizeName}-seamless {
+			padding-left: 0;
+			padding-right: 0;
+		}
 
-            &.#{$sizeName}-uncentered {
-                margin-left: 0;
-                margin-right: 0;
-                float: left;
+		.#{$sizeName}-has-padding {
+			padding: 0 ($columnGutter/2) + px;
+			padding: 0 ($columnGutter/2 / 10) + rem;
+		}
 
-                &.opposite {
-                    float: right;
-                }
-            }
-        }
+		.#{$sizeName}-push-pull-unset {
+			left: unset;
+			right: unset;
+		}
 
-        @for $i from 1 through $totalColumns {
-            .#{$sizeName}#{-$i} { @include grid-column($columns:$i); }
-        }
+		.col,
+		.column,
+		.columns {
+			
+			&.#{$sizeName}-centered {
+				margin-left: auto;
+				margin-right: auto;
+				float: none; 
+			}
 
-        @for $i from 1 through $totalColumns {
-            .#{$sizeName}-push#{-$i} { @include grid-column($push:$i); }
-        }
+			&.#{$sizeName}-uncentered {
+				margin-left: 0;
+				margin-right: 0;
+				float: left;
 
-        @for $i from 1 through $totalColumns {
-            .#{$sizeName}-pull#{-$i} { @include grid-column($pull:$i); }
-        }
+				&.opposite {
+					float: right;
+				}
+			}
+		}
 
-        @for $i from 1 through $totalColumns {
-            .#{$sizeName}-block-grid#{-$i} > li {
-                width: (#{100/$i})+("%");
-            }
+		@for $i from 1 through $totalColumns {
+			.#{$sizeName}#{-$i} { @include grid-column($columns:$i); }
+		}
 
-            .#{$sizeName}-block-grid#{-$i} > li:nth-of-type(n) {
-                clear: none;   
-            }
+		@for $i from 1 through $totalColumns {
+			.#{$sizeName}-push#{-$i} { @include grid-column($push:$i); }
+		}
 
-            .#{$sizeName}-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
-                clear: both; 
-            }
-        }
-    }
+		@for $i from 1 through $totalColumns {
+			.#{$sizeName}-pull#{-$i} { @include grid-column($pull:$i); }
+		}
+
+		@for $i from 1 through $totalColumns {
+			.#{$sizeName}-block-grid#{-$i} > li {
+				width: (#{100/$i})+("%");
+			}
+
+			.#{$sizeName}-block-grid#{-$i} > li:nth-of-type(n) {
+				clear: none;   
+			}
+
+			.#{$sizeName}-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
+				clear: both; 
+			}
+		}
+	}
+}
+
+
+//----------------------------------------------------------------
+//  Default Grid - xsmall
+//----------------------------------------------------------------
+@media only screen {
+
+	.xsmall-hidden {
+		display: none;
+	}
+
+	.xsmall-block {
+		display: block;
+	}
+
+	.xsmall-inline {
+		display: inline;
+	}
+
+	.xsmall-inline-block {
+		display: inline-block;
+	}
+
+	.xsmall-text-center {
+		text-align: center;
+	}
+
+	.xsmall-text-left {
+		text-align: left;
+	}
+
+	.xsmall-text-right {
+		text-align: right;
+	}
+
+	.xsmall-seamless {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.xsmall-has-padding {
+		padding: 0 ($columnGutter/2) + px;
+		padding: 0 ($columnGutter/2 / 10) + rem;
+	}
+
+	.xsmall-push-pull-unset {
+		left: unset;
+		right: unset;
+	}
+
+	.col,
+	.column,
+	.columns {
+		
+		&.xsmall-centered {
+			margin-left: auto;
+			margin-right: auto;
+			float: none; 
+		}
+
+		&.xsmall-uncentered {
+			margin-left: 0;
+			margin-right: 0;
+			float: left;
+
+			&.opposite {
+				float: right;
+			}
+		}
+	}
+
+	@for $i from 1 through $totalColumns {
+		.xsmall#{-$i} { @include grid-column($columns:$i); }
+	}
+
+	@for $i from 1 through $totalColumns {
+		.xsmall-push#{-$i} { @include grid-column($push:$i); }
+	}
+
+	@for $i from 1 through $totalColumns {
+		.xsmall-pull#{-$i} { @include grid-column($pull:$i); }
+	}
+
+	@for $i from 1 through $totalColumns {
+		.xsmall-block-grid#{-$i} > li {
+			width: (#{100/$i+("%")});
+		}
+		.xsmall-block-grid#{-$i} > li:nth-of-type(n) {
+			clear: none;   
+		}
+		.xsmall-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
+			clear: both; 
+		}
+	}
 }
 
 
 //----------------------------------------------------------------
 //  Grid Sizes
 //----------------------------------------------------------------
-@media only screen {
-
-    .xsmall-hidden {
-        display: none;
-    }
-
-    .xsmall-block {
-        display: block;
-    }
-
-    .xsmall-inline {
-        display: inline;
-    }
-
-    .xsmall-inline-block {
-        display: inline-block;
-    }
-
-    .xsmall-text-center {
-        text-align: center;
-    }
-
-    .xsmall-text-left {
-        text-align: left;
-    }
-
-    .xsmall-text-right {
-        text-align: right;
-    }
-
-    .col,
-    .column,
-    .columns {
-        
-        &.xsmall-centered {
-            margin-left: auto;
-            margin-right: auto;
-            float: none; 
-        }
-
-        &.xsmall-uncentered {
-            margin-left: 0;
-            margin-right: 0;
-            float: left;
-
-            &.opposite {
-                float: right;
-            }
-        }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .xsmall#{-$i} { @include grid-column($columns:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .xsmall-push#{-$i} { @include grid-column($push:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .xsmall-pull#{-$i} { @include grid-column($pull:$i); }
-    }
-
-    @for $i from 1 through $totalColumns {
-        .xsmall-block-grid#{-$i} > li {
-            width: (#{100/$i})+("%");
-        }
-        .xsmall-block-grid#{-$i} > li:nth-of-type(n) {
-            clear: none;   
-        }
-        .xsmall-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
-            clear: both; 
-        }
-    }
-}
-
-// Additional grid sizes can be added here.
+// Additional grid sizes can be added here. The first pararmeter is
+// the classs name of the grid size, the second pararmeter is it's 
+// "kick-in" size, which can be a numerical value, however a variable 
+// is advised as this can be reused in media queries.
 @include gridSize("small", $smallScreen);
 @include gridSize("medium", $mediumScreen);
 @include gridSize("large", $largeScreen);

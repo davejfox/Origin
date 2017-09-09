@@ -1,4 +1,11 @@
 .button,
 button,
 input[type="submit"] {
+	cursor: pointer;
+
+	&:focus {
+	}
+
+	&:hover {
+	}
 }

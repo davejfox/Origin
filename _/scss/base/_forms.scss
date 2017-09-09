@@ -1,3 +1,6 @@
+//----------------------------------------------------------------
+//  General Form Styles
+//----------------------------------------------------------------
 ::-webkit-input-placeholder {
 	opacity: 1;
 }
@@ -20,27 +23,30 @@ form {
 fieldset {
 }
 
-input {
-}
-
-.selectWrapper {
+.select-wrapper {
 	
 	select {
 	}
-}
 
-input,
-textarea {
-
-   &:focus {
-   }
+	option {
+	}
 }
 
 input[type="text"],
 input[type="search"],
-input[type="email"], 
+input[type="email"],
+input[type="tel"], 
 textarea {
 
-   &:focus {
-   }
+	&:focus {
+	}
+}
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="tel"] {
+}
+
+textarea {
 }

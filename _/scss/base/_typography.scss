@@ -1,63 +1,108 @@
-h1, h2, h3, h4, h5, h6,
-.alpha, .beta, .gamma, .delta, .epsilon, .zeta {
-	color: $titleColor;
-	font-weight: normal;
+//----------------------------------------------------------------
+//  Defaults
+//----------------------------------------------------------------
+//  Initialize webfonts here, if used - @include font($fontName, $fontFileName);
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
+
+//----------------------------------------------------------------
+//  Titles & Headers
+//----------------------------------------------------------------
 h1, 
-.alpha {
+.alpha,
+%alpha {
 }
 
 h2, 
-.beta {
+.beta,
+%beta {
 }
 
 h3, 
-.gamma {
+.gamma,
+%gamma {
 }
 
 h4, 
-.delta {
+.delta,
+%delta {
 }
 
 h5, 
-.epsilon {
+.epsilon,
+%epsilon {
 }
 
 h6, 
-.zeta {
+.zeta,
+%zeta {
 }
 
+
+//----------------------------------------------------------------
+//  General Typography
+//----------------------------------------------------------------
 p {
 }
 
 p,
 li {
 	color: $bodyColor;
+}
 
-	&.punch {
+b,
+strong {
+}
 
-	}
+i,
+em {
 }
 
 ol,
 ul {
-    
-    li {
-
-    }
+	
+	li {
+	}
 }
 
 ul {
 
-    li {
-
-    }
+	li {
+	}
 }
 
 ol {
 
-    li {
-
-    }
+	li {
+	}
 }
+
+/*
+// These are some less used typography elements.
+
+pre,
+code {
+}
+
+dl {
+}
+
+dt {
+}
+
+dd {
+}
+
+blockquote {
+}
+
+q {
+}
+
+cite {
+}
+
+*/

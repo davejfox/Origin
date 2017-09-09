@@ -119,24 +119,46 @@ samp {
   font-family: monospace, monospace;
   font-size: 1.4rem; }
 
-h1, h2, h3, h4, h5, h6,
-.alpha, .beta, .gamma, .delta, .epsilon, .zeta {
-  color: #333;
-  font-weight: normal; }
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 p,
 li {
   color: #777; }
 
+/*
+// These are some less used typography elements.
+
+pre,
+code {
+}
+
+dl {
+}
+
+dt {
+}
+
+dd {
+}
+
+blockquote {
+}
+
+q {
+}
+
+cite {
+}
+
+*/
 .row {
   width: 100%;
   margin: 0 auto;
   max-width: 1240px;
   max-width: 124rem;
   *zoom: 1; }
-  .row.half-row {
-    max-width: 620px;
-    max-width: 62rem; }
   .row .row {
     width: auto;
     margin: 0 -25px;
@@ -206,6 +228,18 @@ li {
 
   .xsmall-text-right {
     text-align: right; }
+
+  .xsmall-seamless {
+    padding-left: 0;
+    padding-right: 0; }
+
+  .xsmall-has-padding {
+    padding: 0 25px;
+    padding: 0 2.5rem; }
+
+  .xsmall-push-pull-unset {
+    left: unset;
+    right: unset; }
 
   .col.xsmall-centered,
   .column.xsmall-centered,
@@ -485,6 +519,18 @@ li {
   .small-text-right {
     text-align: right; }
 
+  .small-seamless {
+    padding-left: 0;
+    padding-right: 0; }
+
+  .small-has-padding {
+    padding: 0 25px;
+    padding: 0 2.5rem; }
+
+  .small-push-pull-unset {
+    left: unset;
+    right: unset; }
+
   .col.small-centered,
   .column.small-centered,
   .columns.small-centered {
@@ -762,6 +808,18 @@ li {
 
   .medium-text-right {
     text-align: right; }
+
+  .medium-seamless {
+    padding-left: 0;
+    padding-right: 0; }
+
+  .medium-has-padding {
+    padding: 0 25px;
+    padding: 0 2.5rem; }
+
+  .medium-push-pull-unset {
+    left: unset;
+    right: unset; }
 
   .col.medium-centered,
   .column.medium-centered,
@@ -1041,6 +1099,18 @@ li {
   .large-text-right {
     text-align: right; }
 
+  .large-seamless {
+    padding-left: 0;
+    padding-right: 0; }
+
+  .large-has-padding {
+    padding: 0 25px;
+    padding: 0 2.5rem; }
+
+  .large-push-pull-unset {
+    left: unset;
+    right: unset; }
+
   .col.large-centered,
   .column.large-centered,
   .columns.large-centered {
@@ -1297,37 +1367,6 @@ li {
 
   .large-block-grid-12 > li:nth-of-type(12n+1) {
     clear: both; } }
-.clearfix:after {
-  content: "";
-  width: 100%;
-  height: 0;
-  display: block;
-  clear: both; }
-
-.circle {
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
-  -ms-background-clip: padding-box;
-  background-clip: padding-box;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
-  overflow: hidden; }
-
-.has-shadow {
-  box-shadow: 0 2px 3px #ccc;
-  box-shadow: 0 0.2rem 0.3rem #ccc; }
-
-.box-shadow {
-  -webkit-box-shadow: 0px 2px 3px rgba(138, 133, 127, 0.3);
-  -moz-box-shadow: 0px 2px 3px rgba(138, 133, 127, 0.3);
-  box-shadow: 0px 2px 3px rgba(138, 133, 127, 0.3); }
-
-.aa {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
 a {
   outline: none; }
 
@@ -1336,43 +1375,15 @@ object,
 embed {
   max-width: 100%; }
 
-.fl {
-  float: left; }
-
-.fr {
-  float: right; }
-
-.text-center {
-  text-align: center; }
-
-.text-left {
-  text-align: left; }
-
-.text-right {
-  text-align: right; }
-
-.has-radius {
-  -webkit-border-radius: 0.3rem;
-  -moz-border-radius: 0.3rem;
-  border-radius: 0.3rem; }
-
-.no-wrap {
-  white-space: nowrap; }
-
-.overflow-hidden {
-  overflow: hidden; }
-
-.hidden {
-  display: none; }
-
 .v-wrapper {
   display: table;
   height: 100%;
   width: 100%; }
-  .v-wrapper .v-inner {
-    display: table-cell;
-    height: 100%;
-    vertical-align: middle; }
+
+.v-inner {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle; }
 
 .bg-white {
   background: #fff; }
@@ -1433,5 +1444,4 @@ embed {
 [placeholder]:-ms-input-placeholder {
   opacity: 1; }
 
-table.has-rows tr:nth-of-type(2n) {
-  background: #fafafa; }
+/*# sourceMappingURL=style.css.map */
