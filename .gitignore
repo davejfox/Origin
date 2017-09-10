@@ -1,1 +1,3 @@
 *.scssc
+*.codekit-cache
+*.sass-cache
