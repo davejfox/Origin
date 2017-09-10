@@ -1,13 +1,18 @@
-/* 
-	Built with Origin by Dave J. Fox
-	Twitter: 	@davejfox
-	Github: 	davejfox
+/*----------------------------------------------------------------
+This was built with Origin, by Dave J. Fox.
+Origin is free to use, if you build something cool, show me!
 
-	Free to use, if you make something cool show me! 
-*/
+You can remove this credit if you want, but it'd be a lot cooler
+if you didn't.
 
-// BASE STYLES
-// ---------------------------------------------------------
+Twitter:	https://twitter.com/davejfox/
+Github:		https://github.com/davejfox/
+----------------------------------------------------------------*/
+
+
+//----------------------------------------------------------------
+//  BASE STYLES
+//----------------------------------------------------------------
 @import "base/_variables.scss";
 @import "base/_mixins.scss";
 @import "base/_reset.scss";
@@ -18,17 +23,20 @@
 //@import "base/_tables.scss";
 
 
+//----------------------------------------------------------------
 // VENDOR 
-// ---------------------------------------------------------
+//----------------------------------------------------------------
 //@import "vendor/_third-party-stylesheets-go-here.scss";
 
 
+//----------------------------------------------------------------
 // MODULES
 // ---------------------------------------------------------
 @import "modules/_header.scss";
 @import "modules/_footer.scss";
 
 
+//----------------------------------------------------------------
 // REGIONS
 // ---------------------------------------------------------
 //@import "regions/_home.scss";
