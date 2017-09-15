@@ -1,7 +1,8 @@
 //----------------------------------------------------------------
 //  Rows & Columns
 //----------------------------------------------------------------
-.row {
+.row,
+%row {
 	width: 100%;
 	margin: 0 auto;
 	max-width: ($rowWidth) + px;
@@ -27,7 +28,10 @@
 
 .col,
 .column,
-.columns {
+.columns,
+%col,
+%column,
+%columns, {
 	padding: 0 ($columnGutter/2) + px;
 	padding: 0 ($columnGutter/2 / 10) + rem;
 	position: relative;
@@ -42,24 +46,26 @@
 //----------------------------------------------------------------
 //  Block Grid
 //----------------------------------------------------------------
-[class*="block-grid-"] {
+[class*="block-grid-"],
+%block-grid {
 	display: block;
 	padding: 0;
 	margin: 0 (-($columnGutter/2) + px);
 	margin: 0 (-($columnGutter/2 / 10) + rem);
+
+	&:before, 
+	&:after {
+		content: " ";
+		display: table; 
+	}
+
+	&:after {
+		clear: both; 
+	}
 }
 
-[class*="block-grid-"]:before, 
-[class*="block-grid-"]:after {
-	content: " ";
-	display: table; 
-}
-
-[class*="block-grid-"]:after {
-	clear: both; 
-}
-
-[class*="block-grid-"] > li {
+[class*="block-grid-"] > li,
+%block-grid > li {
 	display: block;
 	height: auto;
 	float: left;
@@ -98,92 +104,106 @@
 
 	@media only screen and (min-width: ($kickIn + px)) {
 
-		.#{$sizeName}-hidden {
+		.#{$sizeName}-hidden,
+		%#{$sizeName}-hidden {
 			display: none;
 		}
 
-		.#{$sizeName}-block {
+		.#{$sizeName}-block,
+		%#{$sizeName}-block {
 			display: block;
 		}
 
-		.#{$sizeName}-inline {
+		.#{$sizeName}-inline,
+		%#{$sizeName}-inline {
 			display: inline;
 		}
 
-		.#{$sizeName}-inline-block {
+		.#{$sizeName}-inline-block,
+		%#{$sizeName}-inline-block {
 			display: inline-block;
 		}
 
-		.#{$sizeName}-text-center {
+		.#{$sizeName}-text-center,
+		%#{$sizeName}-text-center {
 			text-align: center;
 		}
 
-		.#{$sizeName}-text-left {
+		.#{$sizeName}-text-left,
+		%#{$sizeName}-text-left {
 			text-align: left;
 		}
 
-		.#{$sizeName}-text-right {
+		.#{$sizeName}-text-right,
+		%#{$sizeName}-text-right {
 			text-align: right;
 		}
 
-		.#{$sizeName}-seamless {
+		.#{$sizeName}-seamless,
+		%#{$sizeName}-seamless {
 			padding-left: 0;
 			padding-right: 0;
 		}
 
-		.#{$sizeName}-has-padding {
+		.#{$sizeName}-has-padding,
+		%#{$sizeName}-has-padding {
 			padding: 0 ($columnGutter/2) + px;
 			padding: 0 ($columnGutter/2 / 10) + rem;
 		}
 
-		.#{$sizeName}-push-pull-unset {
+		.#{$sizeName}-push-pull-unset,
+		%#{$sizeName}-push-pull-unset {
 			left: unset;
 			right: unset;
 		}
-
-		.col,
-		.column,
-		.columns {
 			
-			&.#{$sizeName}-centered {
-				margin-left: auto;
-				margin-right: auto;
-				float: none; 
-			}
+		.#{$sizeName}-centered,
+		%#{$sizeName}-centered {
+			margin-left: auto;
+			margin-right: auto;
+			float: none; 
+		}
 
-			&.#{$sizeName}-uncentered {
-				margin-left: 0;
-				margin-right: 0;
-				float: left;
+		.#{$sizeName}-uncentered,
+		%#{$sizeName}-uncentered {
+			margin-left: 0;
+			margin-right: 0;
+			float: left;
+		}
 
-				&.opposite {
-					float: right;
-				}
-			}
+		.#{$sizeName}-opposite,
+		%#{$sizeName}-opposite {
+			float: right;
 		}
 
 		@for $i from 1 through $totalColumns {
 			.#{$sizeName}#{-$i} { @include grid-column($columns:$i); }
+			%#{$sizeName}#{-$i} { @include grid-column($columns:$i); }
 		}
 
 		@for $i from 1 through $totalColumns {
 			.#{$sizeName}-push#{-$i} { @include grid-column($push:$i); }
+			%#{$sizeName}-push#{-$i} { @include grid-column($push:$i); }
 		}
 
 		@for $i from 1 through $totalColumns {
 			.#{$sizeName}-pull#{-$i} { @include grid-column($pull:$i); }
+			%#{$sizeName}-pull#{-$i} { @include grid-column($pull:$i); }
 		}
 
 		@for $i from 1 through $totalColumns {
-			.#{$sizeName}-block-grid#{-$i} > li {
+			.#{$sizeName}-block-grid#{-$i} > li,
+			%#{$sizeName}-block-grid#{-$i} > li {
 				width: (#{100/$i})+("%");
 			}
 
-			.#{$sizeName}-block-grid#{-$i} > li:nth-of-type(n) {
+			.#{$sizeName}-block-grid#{-$i} > li:nth-of-type(n),
+			%#{$sizeName}-block-grid#{-$i} > li:nth-of-type(n) {
 				clear: none;   
 			}
 
-			.#{$sizeName}-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
+			.#{$sizeName}-block-grid#{-$i} > li:nth-of-type(#{$i}n+1),
+			%#{$sizeName}-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
 				clear: both; 
 			}
 		}
@@ -196,90 +216,106 @@
 //----------------------------------------------------------------
 @media only screen {
 
-	.xsmall-hidden {
+	.xsmall-hidden,
+	%xsmall-hidden {
 		display: none;
 	}
 
-	.xsmall-block {
+	.xsmall-block,
+	%xsmall-block {
 		display: block;
 	}
 
-	.xsmall-inline {
+	.xsmall-inline,
+	%xsmall-inline {
 		display: inline;
 	}
 
-	.xsmall-inline-block {
+	.xsmall-inline-block,
+	%xsmall-inline-block {
 		display: inline-block;
 	}
 
-	.xsmall-text-center {
+	.xsmall-text-center,
+	%xsmall-text-center {
 		text-align: center;
 	}
 
-	.xsmall-text-left {
+	.xsmall-text-left,
+	%xsmall-text-left {
 		text-align: left;
 	}
 
-	.xsmall-text-right {
+	.xsmall-text-right,
+	%xsmall-text-right {
 		text-align: right;
 	}
 
-	.xsmall-seamless {
+	.xsmall-seamless,
+	%xsmall-seamless {
 		padding-left: 0;
 		padding-right: 0;
 	}
 
-	.xsmall-has-padding {
+	.xsmall-has-padding,
+	%xsmall-has-padding {
 		padding: 0 ($columnGutter/2) + px;
 		padding: 0 ($columnGutter/2 / 10) + rem;
 	}
 
-	.xsmall-push-pull-unset {
+	.xsmall-push-pull-unset,
+	%xsmall-push-pull-unset {
 		left: unset;
 		right: unset;
 	}
+	
+	.xsmall-centered,
+	%xsmall-centered {
+		margin-left: auto;
+		margin-right: auto;
+		float: none; 
+	}
 
-	.col,
-	.column,
-	.columns {
-		
-		&.xsmall-centered {
-			margin-left: auto;
-			margin-right: auto;
-			float: none; 
-		}
+	.xsmall-uncentered,
+	%xsmall-uncentered {
+		margin-left: 0;
+		margin-right: 0;
+		float: left;
+	}
 
-		&.xsmall-uncentered {
-			margin-left: 0;
-			margin-right: 0;
-			float: left;
-
-			&.opposite {
-				float: right;
-			}
-		}
+	.xsmall-opposite,
+	%xsmall-opposite {
+		float: right;
 	}
 
 	@for $i from 1 through $totalColumns {
 		.xsmall#{-$i} { @include grid-column($columns:$i); }
+		%xsmall#{-$i} { @include grid-column($columns:$i); }
 	}
 
 	@for $i from 1 through $totalColumns {
 		.xsmall-push#{-$i} { @include grid-column($push:$i); }
+		%xsmall-push#{-$i} { @include grid-column($push:$i); }
 	}
 
 	@for $i from 1 through $totalColumns {
 		.xsmall-pull#{-$i} { @include grid-column($pull:$i); }
+		%xsmall-pull#{-$i} { @include grid-column($pull:$i); }
 	}
 
 	@for $i from 1 through $totalColumns {
-		.xsmall-block-grid#{-$i} > li {
+		.xsmall-block-grid#{-$i} > li,
+		%xsmall-block-grid#{-$i} > li {
 			width: (#{100/$i+("%")});
 		}
-		.xsmall-block-grid#{-$i} > li:nth-of-type(n) {
+
+		.xsmall-block-grid#{-$i} > li:nth-of-type(n),
+		%xsmall-block-grid#{-$i} > li:nth-of-type(n) {
 			clear: none;   
 		}
-		.xsmall-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
+
+		.xsmall-block-grid#{-$i} > li:nth-of-type(#{$i}n+1),
+		%xsmall-block-grid#{-$i} > li:nth-of-type(#{$i}n+1) {
 			clear: both; 
 		}
 	}
